@@ -1,0 +1,44 @@
+@import '../../../styles.scss'; 
+
+section{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 32px;
+    position: absolute;
+    bottom: 16px;
+    width: 100%;
+    border-top: 9px solid $main-red;
+    padding-top: 16px;
+}
+
+.impressum{
+
+    >a{
+        text-decoration: none;
+        color: white;
+        font-family: $nunito;
+        font-size: 24px;
+        transition: color 0.3s ease;
+
+        &:hover{
+            color: $hover-red;
+        }
+    }
+
+}
+
+.data-policie{
+
+    >a{
+        text-decoration: none;
+        color: white;
+        font-family: $nunito;
+        font-size: 24px;
+        transition: color 0.3s ease;
+
+        &:hover{
+            color: $hover-red;
+        }
+    }
+}
