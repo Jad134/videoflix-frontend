@@ -5,7 +5,7 @@
         <p class="second-text">Sind Sie startklar? Geben Sie Ihre E-Mail-Adresse ein, um ein Konto zu erstellen</p>
     </div>
     <div class="register-container">
-        <input placeholder="E-Mail-Adresse" class="register-email-input" type="text">
-        <button class="letsgo-btn">Loslegen  <mat-icon>arrow_forward_ios</mat-icon></button>
+        <input [(ngModel)]="email" placeholder="E-Mail-Adresse" class="register-email-input" type="text">
+        <button (click)="checkIfMailExist()" class="letsgo-btn">Loslegen  <mat-icon>arrow_forward_ios</mat-icon></button>
     </div> 
 </section>
