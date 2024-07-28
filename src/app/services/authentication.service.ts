@@ -7,18 +7,21 @@ export class AuthenticationService {
 
   constructor() { }
 
-  checkUsername(username:any) {
-    fetch(`http://127.0.0.1:8000/check-username/${username}/`)
+  async checkUsername(username:any) {
+    return await fetch(`http://127.0.0.1:8000/check-username/${username}/`)
         .then(response => response.json())
         .then(data => {
             if (data.exists) {
                 console.log(data.message);
-                // Benutzername ist bereits vergeben
+                return true
             } else {
                 console.log(data.message);
-                // Benutzername ist verfügbar
+                return false
             }
         })
-        .catch(error => console.error('Error:', error));
+        .catch(error => {
+          console.error('Error:', error);
+          return false; // Optional: Behandle den Fehler und gib false zurück
+      });
 }
 }

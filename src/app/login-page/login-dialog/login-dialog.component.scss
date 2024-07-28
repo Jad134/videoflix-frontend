@@ -17,8 +17,12 @@ section {
     justify-content: center;
     align-items: baseline;
     border-radius: 32px;
+}
 
-
+.header{
+    position: absolute;
+    width: 100%;
+    top: 0;
 }
 
 .login-container {
@@ -103,7 +107,7 @@ section {
     justify-content: center;
     align-items: center;
     gap: 16px;
-    width: 80%;
+
     align-items: flex-start;
 
     >h2 {

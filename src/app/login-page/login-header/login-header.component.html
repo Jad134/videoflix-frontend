@@ -4,7 +4,10 @@
             <h1>VideoFlix</h1>
         </div>
         <div>
-            <button class="login-button">Einloggen</button>
+            <button [ngStyle]="{
+                'opacity': hideLogInButton ? '0' : '1',
+                'pointer-events': hideLogInButton ? 'none' : 'auto'
+              }"  (click)="routeToLogIn()" class="login-button">Einloggen</button>
         </div>
     </div>
 </section>
