@@ -69,6 +69,19 @@ section {
     }
 }
 
+input[type="number"] {
+    -moz-appearance: textfield; /* Firefox */
+    -webkit-appearance: none; /* Safari und Chrome */
+    appearance: none; /* Standard */
+  }
+  
+  /* Entfernt die Pfeile in Firefox */
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
 .login-password-input {
     background-color: $input-color;
     width: 350px;
@@ -107,6 +120,10 @@ section {
         /* Slightly darker red */
     }
 
+    &:disabled{
+        background-color: gray;
+    }
+
 }
 
 .action-div {
@@ -133,4 +150,9 @@ section {
     margin-block-start: 0;
     margin-block-end: 0;
     font-family: $nunito;
+}
+
+.taken-mail-info{
+    color: red;
+    opacity: 0;
 }

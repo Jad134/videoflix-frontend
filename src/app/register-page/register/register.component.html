@@ -4,19 +4,20 @@
         <div class="register-container-bg" *ngIf="counter === 0">
             <div class="action-div" >
                 <h2>Email-Adresse</h2>
-                <form class="login-form" (ngSubmit)="onNext()">
-                    <input [(ngModel)]="sharedService.currentMail" placeholder="E-Mail-Adresse" name="email" class="login-email-input" type="text">
-                    <button class="login-button" type="submit">Weiter</button>
+                <form #mailForm="ngForm" class="login-form" >
+                    <input required [(ngModel)]="sharedService.currentMail" placeholder="E-Mail-Adresse" name="email" class="login-email-input" type="text">
+                    <button [disabled]="!mailForm.valid" class="login-button" (click)="checkExistMail()">Weiter</button>
+                    <p #mailInfo class="taken-mail-info">*Diese Email ist bereits vergeben</p>
                 </form>
             </div>
         </div>
         <div class="register-container-bg"  *ngIf="counter === 1">
             <div class="action-div">
                 <h2>Namen</h2>
-                <form class="login-form2" (ngSubmit)="onNext()">
-                    <input placeholder="Vorname" name="firstName" class="login-email-input" type="text">
-                    <input placeholder="Nachname" name="lastName" class="login-email-input" type="text">
-                    <button class="login-button" type="submit">Weiter</button>
+                <form #nameForm="ngForm" class="login-form2" (ngSubmit)="onNext()">
+                    <input required [(ngModel)]="firstName" placeholder="Vorname" name="firstName" class="login-email-input" type="text">
+                    <input required [(ngModel)]="lastName" placeholder="Nachname" name="lastName" class="login-email-input" type="text">
+                    <button [disabled]="!nameForm.valid" class="login-button" type="submit">Weiter</button>
                     <button class="login-button" type="button" (click)="onPrevious()">Zurück</button>
                 </form>
             </div>
@@ -24,10 +25,10 @@
         <div class="register-container-bg" *ngIf="counter === 2">
             <div class="action-div" >
                 <h2>Adresse & Nummer</h2>
-                <form class="login-form2">
-                    <input placeholder="Adresse" name="address" class="login-email-input" type="text">
-                    <input placeholder="Telefon Nummer" name="phoneNumber" class="login-email-input" type="text">
-                    <button class="login-button" type="submit">Registrieren</button>
+                <form #addressForm="ngForm" class="login-form2">
+                    <input required [(ngModel)]="address" placeholder="Adresse" name="address" class="login-email-input" type="text">
+                    <input  [(ngModel)]="phoneNumber" placeholder="Telefon Nummer (optional)" name="phoneNumber" class="login-email-input" type="number">
+                    <button [disabled]="!addressForm.valid" (click)="register()" class="login-button" type="submit">Registrieren</button>
                     <button class="login-button" type="button" (click)="onPrevious()">Zurück</button>
                 </form>
             </div>
