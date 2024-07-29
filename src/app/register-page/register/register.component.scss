@@ -11,7 +11,7 @@ section {
 .register-container-bg {
     background-color: rgba(255, 255, 255, 0.1);
     /* padding: 138px; rausnehmen?*/
-    height: 50%;
+    height: 44%;
     width: 40%;
     display: flex;
     justify-content: center;
@@ -19,7 +19,7 @@ section {
     border-radius: 32px;
 }
 
-.header{
+.header {
     position: absolute;
     width: 100%;
     top: 0;
@@ -115,6 +115,14 @@ section {
         font-size: 32px;
         font-family: $nunito;
     }
+}
 
-
+.email-text {
+    max-width: 350px;
+    color: white;
+    text-align: center;
+    font-size: 24px;
+    margin-block-start: 0;
+    margin-block-end: 0;
+    font-family: $nunito;
 }

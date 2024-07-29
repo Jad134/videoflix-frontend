@@ -7,7 +7,7 @@
             <div class="action-div">
                 <h2>Einloggen</h2>
                 <form class="login-form" action="">
-                    <input placeholder="E-Mail-Adresse" class="login-email-input" type="text">
+                    <input [(ngModel)]="sharedService.currentMail" name="email" placeholder="E-Mail-Adresse" class="login-email-input" type="text">
                     <input placeholder="Passwort" class="login-password-input" type="text">
                     <button class="login-button">Einloggen</button>
                 </form>

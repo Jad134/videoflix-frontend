@@ -14,6 +14,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { AuthenticationService } from '../../../services/authentication.service';
 import { Router } from '@angular/router';
 import { LoginHeaderComponent } from "../../login-header/login-header.component";
+import { SharedService } from '../../../services/shared.service';
 
 @Component({
     selector: 'app-login-main',
@@ -23,7 +24,8 @@ import { LoginHeaderComponent } from "../../login-header/login-header.component"
     imports: [FormsModule, MatFormFieldModule, MatInputModule, ReactiveFormsModule, MatIconModule, LoginHeaderComponent]
 })
 export class LoginMainComponent {
-  authService = inject(AuthenticationService)
+  authService = inject(AuthenticationService);
+  sharedService = inject(SharedService)
   email: any;
 
   constructor(private router: Router){
@@ -34,9 +36,11 @@ export class LoginMainComponent {
         if (mailExist) {
           this.router.navigate(['login'])
             console.log("Die E-Mail ist bereits vergeben.");
+            this.sharedService.currentMail = this.email;
         } else {
-            // Hier kannst du weiter verfahren, wenn die E-Mail noch verfügbar ist
+          this.router.navigate(['register'])
             console.log("Die E-Mail ist verfügbar.");
+            this.sharedService.currentMail = this.email;
         }
     }).catch(error => {
         console.error('Error:', error);
