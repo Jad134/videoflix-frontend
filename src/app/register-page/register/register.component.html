@@ -25,10 +25,21 @@
         <div class="register-container-bg" *ngIf="counter === 2">
             <div class="action-div" >
                 <h2>Adresse & Nummer</h2>
-                <form #addressForm="ngForm" class="login-form2">
+                <form #addressForm="ngForm" class="login-form2" (ngSubmit)="onNext()">
                     <input required [(ngModel)]="address" placeholder="Adresse" name="address" class="login-email-input" type="text">
                     <input  [(ngModel)]="phoneNumber" placeholder="Telefon Nummer (optional)" name="phoneNumber" class="login-email-input" type="number">
-                    <button [disabled]="!addressForm.valid" (click)="register()" class="login-button" type="submit">Registrieren</button>
+                    <button [disabled]="!addressForm.valid" class="login-button" type="submit">Weiter</button>
+                    <button class="login-button" type="button" (click)="onPrevious()">Zurück</button>
+                </form>
+            </div>
+        </div>
+        <div class="register-container-bg"  *ngIf="counter === 3">
+            <div class="action-div">
+                <h2>Passwort</h2>
+                <form #pwForm="ngForm" class="login-form2">
+                    <input required [(ngModel)]="pw1" placeholder="Passwort" name="firstPassword" class="login-email-input" type="password">
+                    <input required [(ngModel)]="pw2" placeholder="Passwort wiederholen" name="repeatPassword" class="login-email-input" type="password">
+                    <button [disabled]="!pwForm.valid || pw1 !== pw2" (click)="register()" class="login-button" type="submit">Registrieren</button>
                     <button class="login-button" type="button" (click)="onPrevious()">Zurück</button>
                 </form>
             </div>

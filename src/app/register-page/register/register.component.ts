@@ -4,8 +4,6 @@ import { LoginFooterComponent } from "../../login-page/login-footer/login-footer
 import { FormsModule } from '@angular/forms';
 import { SharedService } from '../../services/shared.service';
 import { CommonModule } from '@angular/common';
-
-
 import { trigger, transition, query, style, animate, group } from '@angular/animations';
 import { AuthenticationService } from '../../services/authentication.service';
 
@@ -49,11 +47,13 @@ export class RegisterComponent {
     sharedService = inject(SharedService);
     authService = inject(AuthenticationService);
     counter: number = 0;
-    steps: Array<number> = [1, 2, 3];
+    steps: Array<number> = [1, 2, 3, 4];
     firstName!: string;
     lastName!: string;
     address!: string;
     phoneNumber!: string;
+    pw1!:string;
+    pw2!:string;
     @ViewChild('mailInfo') mailInfo!: ElementRef<HTMLParagraphElement>;
  
 
