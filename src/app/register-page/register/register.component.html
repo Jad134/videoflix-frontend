@@ -1,22 +1,70 @@
-
 <section>
-    <app-login-header  class="header"></app-login-header>
-    <div class="login-container">
-        <div class="register-container-bg">
-            
-            <div class="action-div">
-                <h2>Registrieren</h2>
-                <p class="email-text">Geben Sie ihre E-Mail Adresse an, um einen Aktivierungslink zu erhalten.</p>
-                <form class="login-form" action="">
+    <app-login-header class="header"></app-login-header>
+    <div class="login-container" [@animSlider]="counter">
+        <div class="register-container-bg" *ngIf="counter === 0">
+            <div class="action-div" >
+                <h2>Email-Adresse</h2>
+                <form class="login-form" (ngSubmit)="onNext()">
                     <input [(ngModel)]="sharedService.currentMail" placeholder="E-Mail-Adresse" name="email" class="login-email-input" type="text">
-                    <button class="login-button">Registrieren</button>
+                    <button class="login-button" type="submit">Weiter</button>
                 </form>
-               
             </div>
         </div>
-      
-        
+        <div class="register-container-bg"  *ngIf="counter === 1">
+            <div class="action-div">
+                <h2>Namen</h2>
+                <form class="login-form2" (ngSubmit)="onNext()">
+                    <input placeholder="Vorname" name="firstName" class="login-email-input" type="text">
+                    <input placeholder="Nachname" name="lastName" class="login-email-input" type="text">
+                    <button class="login-button" type="submit">Weiter</button>
+                    <button class="login-button" type="button" (click)="onPrevious()">Zurück</button>
+                </form>
+            </div>
+        </div>
+        <div class="register-container-bg" *ngIf="counter === 2">
+            <div class="action-div" >
+                <h2>Adresse & Nummer</h2>
+                <form class="login-form2">
+                    <input placeholder="Adresse" name="address" class="login-email-input" type="text">
+                    <input placeholder="Telefon Nummer" name="phoneNumber" class="login-email-input" type="text">
+                    <button class="login-button" type="submit">Registrieren</button>
+                    <button class="login-button" type="button" (click)="onPrevious()">Zurück</button>
+                </form>
+            </div>
+        </div>
     </div>
     
 </section>
 <app-login-footer></app-login-footer>
+
+
+<!-- <section>
+    <app-login-header class="header"></app-login-header>
+    <div class="login-container">
+        <div class="register-container-bg" [@animSlider]="counter">
+            <div class="action-div" *ngIf="counter === 0">
+                <h2>Registrieren</h2>
+                <form class="login-form" (ngSubmit)="onNext()">
+                    <input placeholder="E-Mail-Adresse" name="email" class="login-email-input" type="text">
+                    <button class="login-button" type="submit">Weiter</button>
+                </form>
+            </div>
+            <div class="action-div" *ngIf="counter === 1">
+                <form class="login-form" (ngSubmit)="onNext()">
+                    <input placeholder="Vorname" name="firstName" class="login-email-input" type="text">
+                    <input placeholder="Nachname" name="lastName" class="login-email-input" type="text">
+                    <button class="login-button" type="submit">Weiter</button>
+                    <button class="login-button" type="button" (click)="onPrevious()">Zurück</button>
+                </form>
+            </div>
+            <div class="action-div" *ngIf="counter === 2">
+                <form class="login-form">
+                    <input placeholder="Adresse" name="address" class="login-email-input" type="text">
+                    <input placeholder="Telefon Nummer" name="phoneNumber" class="login-email-input" type="text">
+                    <button class="login-button" type="submit">Registrieren</button>
+                    <button class="login-button" type="button" (click)="onPrevious()">Zurück</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section> -->

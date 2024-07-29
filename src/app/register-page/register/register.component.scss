@@ -17,6 +17,8 @@ section {
     justify-content: center;
     align-items: baseline;
     border-radius: 32px;
+    position: relative;
+    overflow-x: hidden;
 }
 
 .header {
@@ -39,6 +41,12 @@ section {
     flex-direction: column;
     gap: 32px;
     margin-top: 32px;
+}
+
+.login-form2{
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
 }
 
 .login-email-input {
