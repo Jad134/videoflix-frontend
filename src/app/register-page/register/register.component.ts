@@ -52,10 +52,10 @@ export class RegisterComponent {
     lastName!: string;
     address!: string;
     phoneNumber!: string;
-    pw1!:string;
-    pw2!:string;
+    pw1!: string;
+    pw2!: string;
     @ViewChild('mailInfo') mailInfo!: ElementRef<HTMLParagraphElement>;
- 
+
 
 
 
@@ -80,7 +80,7 @@ export class RegisterComponent {
                 this.mailInfo.nativeElement.style.opacity = '0'
                 this.onNext()
                 console.log();
-                
+
             }
         }).catch(error => {
             console.error('Error:', error);
@@ -91,16 +91,25 @@ export class RegisterComponent {
 
 
     register() {
-        let test = {
-            'address': this.address,
-            'number': this.phoneNumber,
-            'firstName': this.firstName,
-            'lastName': this.lastName,
-            'mail': this.sharedService.currentMail
-        }
-        console.log(test);
+        if (this.pw1 === this.pw2) {
+            let user = {
+                address: this.address,
+                password: this.pw1,
+                first_name: this.firstName,
+                last_name: this.lastName,
+                email: this.sharedService.currentMail,
+                username: this.sharedService.currentMail,
+                phone: this.phoneNumber,
+            };
+            console.log(user);
 
+            this.authService.registerUser(user);
+        } else {
+            console.error('Passwörter stimmen nicht überein.');
+        }
     }
+
 }
+
 
 
