@@ -7,15 +7,19 @@ export class AuthenticationService {
 
   constructor() { }
 
+
+  /**
+   * 
+   * @param username this function use mailaddress, but the backend needs username for login, thats why the username is the mailadress
+   * @returns true or false if username/mail exist
+   */
   async checkUsername(username: any) {
     return await fetch(`http://127.0.0.1:8000/check-username/${username}/`)
       .then(response => response.json())
       .then(data => {
         if (data.exists) {
-          console.log(data.message);
           return true
         } else {
-          console.log(data.message);
           return false
         }
       })
@@ -26,6 +30,11 @@ export class AuthenticationService {
   }
 
   
+  /**
+   * 
+   * @param user userobject from register component
+   * @returns true or false to control the counter at register component for the last slide animation
+   */
   async registerUser(user: any): Promise<boolean> {
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");

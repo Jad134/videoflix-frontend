@@ -31,6 +31,10 @@ export class LoginMainComponent {
   constructor(private router: Router){
 
   }
+
+  /**
+   * This function check, if the mail already exist at the database
+   */
   async checkIfMailExist() {
     await this.authService.checkUsername(this.email).then(mailExist => {
         if (mailExist) {
@@ -44,7 +48,6 @@ export class LoginMainComponent {
         }
     }).catch(error => {
         console.error('Error:', error);
-        // Optional: Behandle den Fehler hier
     });
 }
 }

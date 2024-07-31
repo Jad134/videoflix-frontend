@@ -58,18 +58,24 @@ export class RegisterComponent {
     loading = false;
     @ViewChild('mailInfo') mailInfo!: ElementRef<HTMLParagraphElement>;
 
-    constructor(private router: Router){
+    constructor(private router: Router) {
 
     }
 
 
-
+    /**
+     * This function add one to counter for the slide div animation
+     */
     onNext() {
         if (this.counter < this.steps.length - 1) {
             this.counter++;
         }
     }
 
+
+    /**
+     * This function deducts one from counter for the slide div animation
+    */
     onPrevious() {
         if (this.counter > 0) {
             this.counter--;
@@ -77,6 +83,9 @@ export class RegisterComponent {
     }
 
 
+    /**
+     * This function checks if the mail exist and control the infotext for existing mail
+     */
     async checkExistMail() {
         await this.authService.checkUsername(this.sharedService.currentMail).then(mailExist => {
             if (mailExist) {
@@ -89,35 +98,23 @@ export class RegisterComponent {
             }
         }).catch(error => {
             console.error('Error:', error);
-            // Optional: Behandle den Fehler hier
         });
     }
 
 
-
+    /**
+     * start the registrationfunction at authservice and add one to counter and control the loadingscreen
+     */
     async register() {
         this.loading = true;
         if (this.pw1 === this.pw2) {
-            let user = {
-                address: this.address,
-                password: this.pw1,
-                first_name: this.firstName,
-                last_name: this.lastName,
-                email: this.sharedService.currentMail,
-                username: this.sharedService.currentMail,
-                phone: this.phoneNumber,
-            };
-            console.log(user);
-
+            let user = this.createUserObject()
             const isRegistered = await this.authService.registerUser(user);
 
             if (isRegistered) {
-                console.log('Registrierung erfolgreich du tester.');
-               this.counter++;
-               this.loading = false;
-                // Beispiel: this.router.navigate(['/welcome']);
+                this.counter++;
+                this.loading = false;
             } else {
-                console.error('Registrierung fehlgeschlagen.');
                 this.loading = false;
             }
         } else {
@@ -126,9 +123,28 @@ export class RegisterComponent {
         }
     }
 
-    routeToLogIn(){
+
+    /**
+     * 
+     * @returns userobject for the registration in backend
+     */
+    createUserObject() {
+        let user = {
+            address: this.address,
+            password: this.pw1,
+            first_name: this.firstName,
+            last_name: this.lastName,
+            email: this.sharedService.currentMail,
+            username: this.sharedService.currentMail,
+            phone: this.phoneNumber,
+        };
+        return user
+    }
+
+
+    routeToLogIn() {
         this.router.navigate(['login'])
-      }
+    }
 }
 
 
