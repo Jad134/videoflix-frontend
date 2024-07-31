@@ -25,25 +25,32 @@ export class AuthenticationService {
       });
   }
 
-  async registerUser(user: any) {
+  
+  async registerUser(user: any): Promise<boolean> {
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
 
     const raw = JSON.stringify(user);
 
-    const requestOptions : RequestInit = {
-      method: "POST",
-      headers: myHeaders,
-      body: raw,
-      redirect: "follow",
+    const requestOptions: RequestInit = {
+        method: "POST",
+        headers: myHeaders,
+        body: raw,
+        redirect: "follow",
     };
 
     try {
-      const response = await fetch("http://127.0.0.1:8000/register/", requestOptions);
-      const result = await response.text();
-      console.log(result);
+        const response = await fetch("http://127.0.0.1:8000/register/", requestOptions);
+        if (response.ok) {
+            return true; // Registrierung erfolgreich
+        } else {
+            const errorText = await response.text();
+            console.error(errorText);
+            return false; // Registrierung fehlgeschlagen
+        }
     } catch (error) {
-      console.error(error);
+        console.error(error);
+        return false; // Fehler beim Netzwerk
     }
-  }
+}
 }

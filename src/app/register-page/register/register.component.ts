@@ -6,6 +6,7 @@ import { SharedService } from '../../services/shared.service';
 import { CommonModule } from '@angular/common';
 import { trigger, transition, query, style, animate, group } from '@angular/animations';
 import { AuthenticationService } from '../../services/authentication.service';
+import { Router } from '@angular/router';
 
 const left = [
     query(':enter, :leave', style({ position: 'absolute', }), { optional: true }),
@@ -47,15 +48,19 @@ export class RegisterComponent {
     sharedService = inject(SharedService);
     authService = inject(AuthenticationService);
     counter: number = 0;
-    steps: Array<number> = [1, 2, 3, 4];
+    steps: Array<number> = [1, 2, 3, 4, 5];
     firstName!: string;
     lastName!: string;
     address!: string;
     phoneNumber!: string;
     pw1!: string;
     pw2!: string;
+    loading = false;
     @ViewChild('mailInfo') mailInfo!: ElementRef<HTMLParagraphElement>;
 
+    constructor(private router: Router){
+
+    }
 
 
 
@@ -90,7 +95,8 @@ export class RegisterComponent {
 
 
 
-    register() {
+    async register() {
+        this.loading = true;
         if (this.pw1 === this.pw2) {
             let user = {
                 address: this.address,
@@ -103,12 +109,26 @@ export class RegisterComponent {
             };
             console.log(user);
 
-            this.authService.registerUser(user);
+            const isRegistered = await this.authService.registerUser(user);
+
+            if (isRegistered) {
+                console.log('Registrierung erfolgreich du tester.');
+               this.counter++;
+               this.loading = false;
+                // Beispiel: this.router.navigate(['/welcome']);
+            } else {
+                console.error('Registrierung fehlgeschlagen.');
+                this.loading = false;
+            }
         } else {
             console.error('Passwörter stimmen nicht überein.');
+            this.loading = false;
         }
     }
 
+    routeToLogIn(){
+        this.router.navigate(['login'])
+      }
 }
 
 
