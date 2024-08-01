@@ -1,1 +1,15 @@
-<p>activate-user-info works!</p>
+<section>
+    <div class="register-succes-bg">
+        <div class="success-registered-info-container">
+            <h1>Account aktivieren</h1>
+            <form class="login-form2">
+                <p class="info1"> Wir haben Ihnen eine Bestätigungs-E-Mail gesendet. <br> Bitte überprüfen Sie Ihr
+                    Postfach und folgen Sie dem darin enthaltenen Link, um Ihr Profil zu aktivieren.</p>
+                <p class="info1">Sie können auch einen neuen Link anfordern. Geben sie dazu bitte ihre registrierte
+                    E-Mail Adresse ein.</p>
+                <input [(ngModel)]="this.sharedService.currentMail" placeholder="Email-Adresse" name="mail" class="login-email-input" type="text">
+                <button class="final-login-button">Aktivierungslink anfordern</button>
+            </form>
+        </div>
+    </div>
+</section>
