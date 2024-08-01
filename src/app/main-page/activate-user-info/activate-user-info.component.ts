@@ -14,4 +14,9 @@ import { SharedService } from '../../services/shared.service';
 })
 export class ActivateUserInfoComponent {
   sharedService = inject(SharedService);
+  authService = inject(AuthenticationService);
+
+  async getActivateLink(){
+     this.authService.resendActivationLink(this.sharedService.currentMail)
+  }
 }

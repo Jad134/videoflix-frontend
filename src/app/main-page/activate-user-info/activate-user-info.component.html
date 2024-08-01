@@ -8,7 +8,7 @@
                 <p class="info1">Sie können auch einen neuen Link anfordern. Geben sie dazu bitte ihre registrierte
                     E-Mail Adresse ein.</p>
                 <input [(ngModel)]="this.sharedService.currentMail" placeholder="Email-Adresse" name="mail" class="login-email-input" type="text">
-                <button class="final-login-button">Aktivierungslink anfordern</button>
+                <button (click)="getActivateLink()" class="final-login-button">Aktivierungslink anfordern</button>
             </form>
         </div>
     </div>

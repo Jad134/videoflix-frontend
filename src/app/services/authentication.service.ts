@@ -31,7 +31,7 @@ export class AuthenticationService {
       });
   }
 
-  
+
   /**
    * 
    * @param user userobject from register component
@@ -44,29 +44,29 @@ export class AuthenticationService {
     const raw = JSON.stringify(user);
 
     const requestOptions: RequestInit = {
-        method: "POST",
-        headers: myHeaders,
-        body: raw,
-        redirect: "follow",
+      method: "POST",
+      headers: myHeaders,
+      body: raw,
+      redirect: "follow",
     };
 
     try {
-        const response = await fetch("http://127.0.0.1:8000/register/", requestOptions);
-        if (response.ok) {
-            return true; // Registrierung erfolgreich
-        } else {
-            const errorText = await response.text();
-            console.error(errorText);
-            return false; // Registrierung fehlgeschlagen
-        }
-    } catch (error) { 
-        console.error(error);
-        return false; // Fehler beim Netzwerk
+      const response = await fetch("http://127.0.0.1:8000/register/", requestOptions);
+      if (response.ok) {
+        return true; // Registrierung erfolgreich
+      } else {
+        const errorText = await response.text();
+        console.error(errorText);
+        return false; // Registrierung fehlgeschlagen
+      }
+    } catch (error) {
+      console.error(error);
+      return false; // Fehler beim Netzwerk
     }
-}
+  }
 
 
- login(username: string, password: string): void {
+  login(username: string, password: string): void {
     this.http.post('http://127.0.0.1:8000/login/', { username, password }).subscribe({
       next: (response: any) => {
         // Handle successful login
@@ -80,6 +80,20 @@ export class AuthenticationService {
           // Handle other errors
           console.error('Login failed:', error);
         }
+      }
+    });
+  }
+
+
+  resendActivationLink(username: string): void {
+    this.http.post('http://127.0.0.1:8000/resend-activation/', { username }).subscribe({
+      next: (response: any) => {
+        console.log('Activation link resent successfully');
+        // Optionally inform the user or navigate to a success message
+      },
+      error: (error) => {
+        console.error('Failed to resend activation link:', error);
+        // Handle error (e.g., display an error message to the user)
       }
     });
   }
