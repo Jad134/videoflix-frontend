@@ -1,11 +1,13 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticationService {
 
-  constructor() { }
+  constructor(private http: HttpClient, private router: Router) { }
 
 
   /**
@@ -57,9 +59,28 @@ export class AuthenticationService {
             console.error(errorText);
             return false; // Registrierung fehlgeschlagen
         }
-    } catch (error) {
+    } catch (error) { 
         console.error(error);
         return false; // Fehler beim Netzwerk
     }
 }
+
+
+ login(username: string, password: string): void {
+    this.http.post('http://127.0.0.1:8000/login/', { username, password }).subscribe({
+      next: (response: any) => {
+        // Handle successful login
+        console.log('Login successful');
+        // Redirect or do something else after successful login
+      },
+      error: (error) => {
+        if (error.status === 403 && error.error.detail === 'User account is not activated.') {
+          this.router.navigate(['/activate-info']);
+        } else {
+          // Handle other errors
+          console.error('Login failed:', error);
+        }
+      }
+    });
+  }
 }

@@ -3,6 +3,7 @@ import { LoginComponent } from './login-page/login.component';
 import { LoginDialogComponent } from './login-page/login-dialog/login-dialog.component';
 import { RegisterComponent } from './register-page/register/register.component';
 import { MainComponentComponent } from './main-page/main-component.component';
+import { ActivateUserInfoComponent } from './main-page/activate-user-info/activate-user-info.component';
 
 
 export const routes: Routes = [
@@ -10,5 +11,6 @@ export const routes: Routes = [
     { path: 'login', component: LoginDialogComponent },
     { path: 'register', component: RegisterComponent },
     { path: 'browse', component: MainComponentComponent },
+    { path: 'activate-info', component: ActivateUserInfoComponent },
 
 ];

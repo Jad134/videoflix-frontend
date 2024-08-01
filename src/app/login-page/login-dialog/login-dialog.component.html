@@ -8,8 +8,8 @@
                 <h2>Einloggen</h2>
                 <form class="login-form" action="">
                     <input [(ngModel)]="sharedService.currentMail" name="email" placeholder="E-Mail-Adresse" class="login-email-input" type="text">
-                    <input placeholder="Passwort" class="login-password-input" type="text">
-                    <button class="login-button">Einloggen</button>
+                    <input [(ngModel)]="password" name="password" placeholder="Passwort" class="login-password-input" type="text">
+                    <button (click)="logIn()" class="login-button">Einloggen</button>
                 </form>
                 <a href="">Passwort vergessen?</a>
                

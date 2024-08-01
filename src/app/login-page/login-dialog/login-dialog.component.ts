@@ -3,6 +3,7 @@ import { LoginFooterComponent } from "../login-footer/login-footer.component";
 import { LoginHeaderComponent } from "../login-header/login-header.component";
 import { SharedService } from '../../services/shared.service';
 import { FormsModule } from '@angular/forms';
+import { AuthenticationService } from '../../services/authentication.service';
 
 
 
@@ -15,6 +16,13 @@ import { FormsModule } from '@angular/forms';
 })
 export class LoginDialogComponent {
     sharedService = inject(SharedService);
+    authServie = inject(AuthenticationService);
+    password: any;
 
     hideLogInButton = true;
+
+
+    logIn() {
+        this.authServie.login(this.sharedService.currentMail, this.password)
+    }
 }
