@@ -15,8 +15,30 @@ import { SharedService } from '../../services/shared.service';
 export class ActivateUserInfoComponent {
   sharedService = inject(SharedService);
   authService = inject(AuthenticationService);
+  resendActivationLinkStatus!: boolean;
+  loading = false;
 
-  async getActivateLink(){
-     this.authService.resendActivationLink(this.sharedService.currentMail)
+  getActivateLink(): void {
+    this.loading = true;
+    const username = this.sharedService.currentMail; // Annahme: sharedService.currentMail enthält den Benutzernamen
+    this.authService.resendActivationLink(username);
+
+    this.authService.getResendActivationLinkStatus().subscribe((status: boolean) => {
+      this.resendActivationLinkStatus = status;
+      if (status) {
+        console.log('Link sent successfully');
+        this.loading = false;
+        // Optional: Zeige Erfolgsmeldung an
+      } else {
+        console.log('Failed to send link');
+        this.loading = false;
+        // Optional: Zeige Fehlermeldung an
+      }
+    });
+  }
+
+
+  resetActivationLinkStatus(){
+    this.resendActivationLinkStatus = false;
   }
 }

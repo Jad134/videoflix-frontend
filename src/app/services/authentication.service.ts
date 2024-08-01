@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { Observable, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +9,7 @@ import { Router } from '@angular/router';
 export class AuthenticationService {
 
   constructor(private http: HttpClient, private router: Router) { }
-
+  resendActivationLinkStatus = new Subject<boolean>();
 
   /**
    * 
@@ -89,12 +90,17 @@ export class AuthenticationService {
     this.http.post('http://127.0.0.1:8000/resend-activation/', { username }).subscribe({
       next: (response: any) => {
         console.log('Activation link resent successfully');
-        // Optionally inform the user or navigate to a success message
+        this.resendActivationLinkStatus.next(true);
       },
       error: (error) => {
         console.error('Failed to resend activation link:', error);
-        // Handle error (e.g., display an error message to the user)
+        this.resendActivationLinkStatus.next(false);
       }
     });
   }
+
+  getResendActivationLinkStatus(): Observable<boolean> {
+    return this.resendActivationLinkStatus.asObservable();
+  }
 }
+
