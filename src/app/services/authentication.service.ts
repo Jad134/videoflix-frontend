@@ -93,6 +93,13 @@ export class AuthenticationService {
         this.resendActivationLinkStatus.next(true);
       },
       error: (error) => {
+        if (error.status === 404 && error.error.detail === 'User not found.') {
+          console.log('User nicht gefunden! Hier message für unbekannten user einfügen');
+        }
+        else if (error.status === 400 && error.error.detail === 'User account is already activated.') {
+          console.log('User ist schon aktiviert. Hier message für bereits aktivierten user eingeben');
+
+        }
         console.error('Failed to resend activation link:', error);
         this.resendActivationLinkStatus.next(false);
       }
