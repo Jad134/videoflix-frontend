@@ -73,6 +73,7 @@ export class AuthenticationService {
     this.http.post('http://127.0.0.1:8000/login/', { username, password }).subscribe({
       next: (response: any) => {
         // Handle successful login
+        this.router.navigate(['/browse']);
         console.log('Login successful');
         // Redirect or do something else after successful login
       },
