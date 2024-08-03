@@ -1,9 +1,11 @@
 <section>
     <div class="register-succes-bg">
         <div class="success-registered-info-container">
-            <h1>Account aktivieren</h1>
+            <h1 [ngStyle]="{
+                'display': resendActivationLinkStatus || userNotFound || userAlreadyActivated ? 'none' : 'flex',
+              }">Account aktivieren</h1>
             <form class="login-form2" [ngStyle]="{
-                'display': resendActivationLinkStatus ? 'none' : 'flex',
+                'display': resendActivationLinkStatus || userNotFound || userAlreadyActivated ? 'none' : 'flex',
                 'pointer-events': resendActivationLinkStatus ? 'none' : 'auto'
               }">
                 <p class="info1"> Wir haben Ihnen eine Bestätigungs-E-Mail gesendet. <br> Bitte überprüfen Sie Ihr
@@ -18,7 +20,24 @@
                 'pointer-events': resendActivationLinkStatus ? 'auto' : 'none'
               }">
                 <h1 class="success-mail" >Link erfolgreich zugesendet</h1>
-                <button (click)="resetActivationLinkStatus()" class="final-login-button"> Erneut anfordern</button>
+                <button (click)="resetLinkStatus()" class="final-login-button"> Erneut anfordern</button>
+            </div>
+            <div class="user-not-found" [ngStyle]="{
+                'display': userNotFound ? 'flex' : 'none',
+                'pointer-events': userNotFound ? 'auto' : 'none'
+              }">
+                <h1 class="success-mail" >User nicht gefunden</h1>
+                <p>Bitte geben sie die richtige E-Mail Adresse an oder Registrieren sie sich.</p>
+                <button (click)="resetLinkStatus()" class="final-login-button"> E-Mail Adresse kontrollieren</button>
+                <button (click)="routeToRegisterPage()" class="final-login-button"> Registrieren</button>
+            </div>
+            <div class="user-not-found" [ngStyle]="{
+                'display': userAlreadyActivated ? 'flex' : 'none',
+                'pointer-events': userAlreadyActivated ? 'auto' : 'none' 
+              }">
+                <h1 class="success-mail" >Ihr Account ist bereits aktiviert</h1>
+                <p>Sie werden in {{ countdown }} Sekunden weitergeleitet</p>
+
             </div>
           
 

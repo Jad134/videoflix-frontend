@@ -120,12 +120,24 @@ section {
     }
 }
 
-.success-mail-container{
+.success-mail-container {
     flex-direction: column;
 }
 
-.success-mail{
+.success-mail {
     color: green !important;
+}
+
+.user-not-found {
+    flex-direction: column;
+
+    > p {
+        color: white;
+    }
+
+    >h1{
+        color: red;
+    }
 }
 
 /*Loading Screen*/
@@ -140,18 +152,23 @@ section {
     left: 0;
     background-color: rgb(102 102 102 / 24%);
     z-index: 9999;
-  }
+}
 
-  .spinner {
+.spinner {
     border: 16px solid black;
     border-top: 16px solid $main-red;
     border-radius: 50%;
     width: 40px;
     height: 40px;
     animation: spin 2s linear infinite;
-  }
-  
-  @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-  }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}

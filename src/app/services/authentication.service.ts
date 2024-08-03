@@ -10,6 +10,8 @@ export class AuthenticationService {
 
   constructor(private http: HttpClient, private router: Router) { }
   resendActivationLinkStatus = new Subject<boolean>();
+  private notFoundStatus = new Subject<boolean>();
+  private alreadyActivatedStatus = new Subject<boolean>();
 
   /**
    * 
@@ -95,10 +97,11 @@ export class AuthenticationService {
       error: (error) => {
         if (error.status === 404 && error.error.detail === 'User not found.') {
           console.log('User nicht gefunden! Hier message für unbekannten user einfügen');
+          this.notFoundStatus.next(true);
         }
         else if (error.status === 400 && error.error.detail === 'User account is already activated.') {
           console.log('User ist schon aktiviert. Hier message für bereits aktivierten user eingeben');
-
+          this.alreadyActivatedStatus.next(true);
         }
         console.error('Failed to resend activation link:', error);
         this.resendActivationLinkStatus.next(false);
@@ -108,6 +111,16 @@ export class AuthenticationService {
 
   getResendActivationLinkStatus(): Observable<boolean> {
     return this.resendActivationLinkStatus.asObservable();
+  }
+
+
+  getNotFoundStatus(): Observable<boolean> {
+    return this.notFoundStatus.asObservable();
+  }
+
+
+  getAlreadyActivatedStatus(): Observable<boolean> {
+    return this.alreadyActivatedStatus.asObservable();
   }
 }
 
