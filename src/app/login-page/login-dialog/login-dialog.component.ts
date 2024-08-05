@@ -18,16 +18,19 @@ export class LoginDialogComponent {
     authServie = inject(AuthenticationService);
     password: any;
     mailOrPasswordWrong: boolean = false;
+    loading :boolean = false;
 
     hideLogInButton = true;
 
 
     async logIn() {
+        this.loading = true;
         this.authServie.login(this.sharedService.currentMail, this.password)
         this.authServie.getLogInStatus().subscribe((status: boolean) => {
             if (status) {
                 this.mailOrPasswordWrong = true;
                 console.log(this.mailOrPasswordWrong);
+                this.loading = false;
             }
         });
 
