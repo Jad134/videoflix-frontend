@@ -12,6 +12,7 @@ export class AuthenticationService {
   resendActivationLinkStatus = new Subject<boolean>();
   private notFoundStatus = new Subject<boolean>();
   private alreadyActivatedStatus = new Subject<boolean>();
+  userNameOrPasswordWrong = new Subject<boolean>();
 
   /**
    * 
@@ -80,7 +81,12 @@ export class AuthenticationService {
       error: (error) => {
         if (error.status === 403 && error.error.detail === 'User account is not activated.') {
           this.router.navigate(['/activate-info']);
-        } else {
+        }
+        else if (error.status === 400 && error.error.detail === 'Invalid credentials.'){
+           console.log('name oder pw falsch')
+           this.userNameOrPasswordWrong.next(true)
+        }
+        else {
           // Handle other errors
           console.error('Login failed:', error);
         }
@@ -122,6 +128,10 @@ export class AuthenticationService {
 
   getAlreadyActivatedStatus(): Observable<boolean> {
     return this.alreadyActivatedStatus.asObservable();
+  }
+
+  getLogInStatus() : Observable<boolean>{
+    return this.userNameOrPasswordWrong.asObservable()
   }
 }
 

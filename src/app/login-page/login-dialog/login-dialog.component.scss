@@ -42,12 +42,12 @@ section {
 }
 
 .login-email-input {
-    background-color: $input-color;
+    background-color: $input-color !important;
     width: 350px;
     height: 42px;
     border-radius: 0.25rem;
     border: none;
-    background-color: #d7d7d7;
+    background-color: #d7d7d7 !important;
     padding-left: 24px;
     font-size: 16px;
     font-family: $nunito;
@@ -127,4 +127,8 @@ section {
             color: $hover-red;
         }
     }
+}
+
+.invalid-login{
+    color: red;
 }
