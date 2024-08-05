@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { MainHeaderComponent } from "./main-header/main-header.component";
+import { Router } from '@angular/router';
+import { AuthenticationService } from '../services/authentication.service';
 
 @Component({
     selector: 'app-main-component',
@@ -9,5 +11,12 @@ import { MainHeaderComponent } from "./main-header/main-header.component";
     imports: [MainHeaderComponent]
 })
 export class MainComponentComponent {
-
+    authServie = inject(AuthenticationService);
+    
+    constructor(private router: Router) {
+        if (!this.authServie.userLoggedIn){
+            this.router.navigate(['/login']);
+        }
+    }
+ 
 }

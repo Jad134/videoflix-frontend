@@ -8,11 +8,15 @@ import { Observable, Subject } from 'rxjs';
 })
 export class AuthenticationService {
 
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient, private router: Router) { 
+    const loggedIn = localStorage.getItem('userLoggedIn');
+    this.userLoggedIn = loggedIn === 'true';
+  }
   resendActivationLinkStatus = new Subject<boolean>();
   private notFoundStatus = new Subject<boolean>();
   private alreadyActivatedStatus = new Subject<boolean>();
   userNameOrPasswordWrong = new Subject<boolean>();
+  userLoggedIn : boolean = false;
 
   /**
    * 
@@ -74,6 +78,8 @@ export class AuthenticationService {
     this.http.post('http://127.0.0.1:8000/login/', { username, password }).subscribe({
       next: (response: any) => {
         // Handle successful login
+        this.userLoggedIn = true;
+        localStorage.setItem('userLoggedIn', 'true');
         this.router.navigate(['/browse']);
         console.log('Login successful');
         // Redirect or do something else after successful login
