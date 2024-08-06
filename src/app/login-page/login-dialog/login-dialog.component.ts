@@ -23,6 +23,9 @@ export class LoginDialogComponent {
     hideLogInButton = true;
 
 
+    /**
+     * This function try to login. If mail or password is wrong set the mailorpw variable true to show the error
+     */
     async logIn() {
         this.loading = true;
         this.authServie.login(this.sharedService.currentMail, this.password)

@@ -25,9 +25,13 @@ export class ActivateUserInfoComponent {
   countdown: number = 10;  // Startzeit des Countdowns in Sekunden
   countdownInterval: any;
 
+
+  /**
+   * This function resend the activate link (post request to django backend) for activate the account
+   */
   getActivateLink(): void {
     this.loading = true;
-    const username = this.sharedService.currentMail; // Annahme: sharedService.currentMail enthält den Benutzernamen
+    const username = this.sharedService.currentMail; //  sharedService.currentMail is username at backend
     this.authService.resendActivationLink(username);
 
     this.authService.getResendActivationLinkStatus().subscribe((status: boolean) => {
@@ -74,6 +78,9 @@ export class ActivateUserInfoComponent {
   }
 
   
+  /**
+   * reset the status
+   */
   resetLinkStatus(){
     this.resendActivationLinkStatus = false;
     this.userNotFound = false;
