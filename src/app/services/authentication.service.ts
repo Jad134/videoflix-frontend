@@ -139,5 +139,12 @@ export class AuthenticationService {
   getLogInStatus() : Observable<boolean>{
     return this.userNameOrPasswordWrong.asObservable()
   }
+
+
+  logout(): void {
+    this.userLoggedIn = false;
+    localStorage.setItem('userLoggedIn', 'false');
+    this.router.navigate(['/login']);
+  }
 }
 

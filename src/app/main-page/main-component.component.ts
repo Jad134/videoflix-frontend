@@ -11,12 +11,15 @@ import { AuthenticationService } from '../services/authentication.service';
     imports: [MainHeaderComponent]
 })
 export class MainComponentComponent {
-    authServie = inject(AuthenticationService);
-    
+    authServiece = inject(AuthenticationService);
+
     constructor(private router: Router) {
-        if (!this.authServie.userLoggedIn){
+        if (!this.authServiece.userLoggedIn){
             this.router.navigate(['/login']);
         }
     }
  
+    logout(){
+        this.authServiece.logout()
+    }
 }
