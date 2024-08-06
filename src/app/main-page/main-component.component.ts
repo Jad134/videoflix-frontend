@@ -19,7 +19,4 @@ export class MainComponentComponent {
         }
     }
  
-    logout(){
-        this.authServiece.logout()
-    }
 }

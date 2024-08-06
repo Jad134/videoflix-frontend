@@ -1,4 +1,20 @@
 <section>
-    <div></div>
-    <div></div>
+    <div class="main">
+        <div class="headline">
+            <h1>VideoFlix</h1>
+        </div>
+        <div class="buttons-container">
+            <div (click)="toggleUserActions()" class="user-button">
+                <mat-icon class="person-icon">person</mat-icon>
+            </div>
+        </div>
+    </div>
+
 </section>
+
+<div [ngClass]="{'show': showUserActions}" class="blured-background" (click)="toggleUserActions()">
+    <div [ngClass]="{'show': showUserActions}" class="user-actions" (click)="$event.stopPropagation()">
+        <button (click)="logout()" class="user-action-btn">Ausloggen</button>
+        <button class="user-action-btn">Rechtliches</button>
+    </div>
+</div>
