@@ -1,0 +1,39 @@
+@import '../../../styles.scss';
+
+section {
+    // overflow-x: hidden;
+    // display: flex;
+    // flex-direction: column;
+    // width: 100vw;
+    // font-family: $nunito;
+    //man kann auch section den gesamten style nehmen und .video-row eine with von fit-content und .content overflow: scroll geben
+
+
+    overflow-x:auto;
+    display: flex;
+    /* flex-direction: column; */
+    /* width: 100vw; */
+    font-family: "Nunito";
+    /* width: 100vw;*/
+}
+
+.video-row {
+    display: flex;
+    gap: 8px;
+}
+
+.video-box {
+    border: 1px white solid;
+    width: 200px;
+    height: 120px;
+    border-radius: 4px;
+}
+
+.category-headline {
+    color: white;
+
+}
+
+.content {
+    padding-bottom: 50px;
+}
