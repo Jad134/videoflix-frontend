@@ -11,6 +11,17 @@ export class AuthenticationService {
   constructor(private http: HttpClient, private router: Router) { 
     const loggedIn = localStorage.getItem('userLoggedIn');
     this.userLoggedIn = loggedIn === 'true';
+
+     // BUGFIX FÜR LOCAL STORAGE PROBLEM, wieterleitung dauert aber zu lange
+    // if (typeof localStorage !== 'undefined') {
+    //   const loggedIn = localStorage.getItem('userLoggedIn');
+    //   this.userLoggedIn = loggedIn === 'true';
+    // } else {
+    //   // Fallback-Logik, falls 'localStorage' nicht verfügbar ist
+    //   this.userLoggedIn = false;
+    // }
+
+
   }
   resendActivationLinkStatus = new Subject<boolean>();
   private notFoundStatus = new Subject<boolean>();
