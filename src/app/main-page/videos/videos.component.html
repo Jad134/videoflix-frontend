@@ -1,14 +1,18 @@
 <section>
     <div class="content">
-        <h2 class="category-headline">Kategorie Überschrift</h2>
-        <div class="video-row">
-            <div class="video-box"></div>
-            <div class="video-box"></div>
-            <div class="video-box"></div>
-            <div class="video-box"></div>
-            <div class="video-box"></div>
-            <div class="video-box"></div>
-        </div>
+        <ng-container *ngFor="let category of getCategories()">
+            <h2 class="category-headline">{{ category }}</h2>
+            <div class="video-row">
+              <ng-container *ngFor="let video of groupedVideos[category]">
+                <div class="video-box">
+                  <video class="video" controls>
+                    <source [src]="video.video_file" type="video/mp4">
+                    Your browser does not support the video tag.
+                  </video>
+                </div>
+              </ng-container>
+            </div>
+          </ng-container>
     </div>
-    
+
 </section>
