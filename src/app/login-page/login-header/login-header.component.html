@@ -1,0 +1,13 @@
+<section>
+    <div class="main">
+        <div class="headline">
+            <h1 (click)="routeToHome()">VideoFlix</h1>
+        </div>
+        <div>
+            <button [ngStyle]="{
+                'opacity': hideLogInButton ? '0' : '1',
+                'pointer-events': hideLogInButton ? 'none' : 'auto'
+              }"  (click)="routeToLogIn()" class="login-button">Einloggen</button>
+        </div>
+    </div>
+</section>

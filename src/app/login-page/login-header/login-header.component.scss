@@ -1,0 +1,67 @@
+@import './../../../styles.scss';
+
+section {
+    width: 100%;
+    font-family: $nunito;
+}
+
+.main {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding-top: 40px;
+}
+
+.headline {
+    font-size: 40px;
+    font-weight: bold;
+    color: $main-red;
+    cursor: pointer;
+
+    >h1 {
+        margin-block-start: 0;
+        margin-block-end: 0;
+    }
+}
+
+.login-button {
+    font-family: "Nunito";
+    border: 0;
+    cursor: pointer;
+    fill: currentColor;
+    position: relative;
+    vertical-align: text-top;
+    width: auto;
+    font-size: 20px;
+    min-height: 2rem;
+    padding: 0.25rem 1rem;
+    border-radius: 0.25rem;
+    background: $main-red;
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+        background: $hover-red;
+        /* Slightly darker red */
+    }
+}
+
+/*Responsive*/
+
+@media(max-width: 380px){
+    .main{
+             padding-left: 24px;
+    }
+
+    .login-button{
+        font-size: 14px;
+    }
+
+    .headline {
+        font-size: 26px;
+        font-weight: bold;
+        color: $main-red;
+    
+    }
+}

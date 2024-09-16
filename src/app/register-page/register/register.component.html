@@ -1,0 +1,103 @@
+<section>
+    <app-login-header class="header"></app-login-header>
+    <div class="login-container" [@animSlider]="counter">
+        <div class="register-container-bg" *ngIf="counter === 0">
+            <div class="action-div">
+                <h2>Email-Adresse</h2>
+                <form #mailForm="ngForm" class="login-form">
+                    <input pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"  #emailInput="ngModel" required [(ngModel)]="sharedService.currentMail" placeholder="E-Mail-Adresse" name="email"
+                        class="login-email-input" type="email">
+                    <button  [class.disabled]="!mailForm.valid" class="login-button" (click)="checkMail(emailInput)">Weiter</button>
+                    <p #mailInfo class="taken-mail-info">*Diese Email ist bereits vergeben</p>
+                </form>
+            </div>
+        </div>
+        <div class="register-container-bg" *ngIf="counter === 1">
+            <div class="action-div">
+                <h2>Namen</h2>
+                <form #nameForm="ngForm" class="login-form2" (ngSubmit)="onNext()">
+                    <input required [(ngModel)]="firstName" placeholder="Vorname" name="firstName"
+                        class="login-email-input" type="text">
+                    <input required [(ngModel)]="lastName" placeholder="Nachname" name="lastName"
+                        class="login-email-input" type="text">
+                    <button [disabled]="!nameForm.valid" class="login-button" type="submit">Weiter</button>
+                    <button class="login-button" type="button" (click)="onPrevious()">Zurück</button>
+                </form>
+            </div>
+        </div>
+        <div class="register-container-bg" *ngIf="counter === 2">
+            <div class="action-div">
+                <h2 class="address-headline">Adresse & Nummer</h2>
+                <form #addressForm="ngForm" class="login-form2" (ngSubmit)="onNext()">
+                    <input required [(ngModel)]="address" placeholder="Adresse" name="address" class="login-email-input"
+                        type="text">
+                    <input [(ngModel)]="phoneNumber" placeholder="Telefon Nummer (optional)" name="phoneNumber"
+                        class="login-email-input" type="number">
+                    <button [disabled]="!addressForm.valid" class="login-button" type="submit">Weiter</button>
+                    <button class="login-button" type="button" (click)="onPrevious()">Zurück</button>
+                </form>
+            </div>
+        </div>
+        <div class="register-container-bg" *ngIf="counter === 3">
+            <div class="action-div">
+                <h2>Passwort</h2>
+                <form #pwForm="ngForm" class="login-form2">
+                    <input required [(ngModel)]="pw1" placeholder="Passwort" name="firstPassword"
+                        class="login-email-input" type="password">
+                    <input required [(ngModel)]="pw2" placeholder="Passwort wiederholen" name="repeatPassword"
+                        class="login-email-input" type="password">
+                    <button [disabled]="!pwForm.valid || pw1 !== pw2" (click)="register()" class="login-button"
+                        type="submit">Registrieren</button>
+                    <button class="login-button" type="button" (click)="onPrevious()">Zurück</button>
+                </form>
+            </div>
+        </div>
+        <div class="register-succes-bg" *ngIf="counter === 4">
+            <div class="success-registered-info-container">
+                <h1>Herzlich Willkommen</h1>
+                <p class="info1"> Wir haben Ihnen eine Bestätigungs-E-Mail gesendet. <br> Bitte überprüfen Sie Ihr
+                    Postfach und folgen Sie dem darin enthaltenen Link, um Ihr Profil zu aktivieren.</p>
+                <p class="info2"> Falls Sie die E-Mail nicht in Ihrem Posteingang finden, sehen Sie bitte auch in Ihrem
+                    Spam- oder Junk-Mail-Ordner nach.</p>
+                <button (click)="routeToLogIn()" class="final-login-button">Einloggen</button>
+            </div>
+        </div>
+    </div>
+    <!-- LoadingScreen -->
+    <div *ngIf="loading" class="spinner-container">
+        <div class="spinner"></div>
+    </div>
+</section>
+<app-login-footer></app-login-footer>
+
+
+<!-- <section>
+    <app-login-header class="header"></app-login-header>
+    <div class="login-container">
+        <div class="register-container-bg" [@animSlider]="counter">
+            <div class="action-div" *ngIf="counter === 0">
+                <h2>Registrieren</h2>
+                <form class="login-form" (ngSubmit)="onNext()">
+                    <input placeholder="E-Mail-Adresse" name="email" class="login-email-input" type="text">
+                    <button class="login-button" type="submit">Weiter</button>
+                </form>
+            </div>
+            <div class="action-div" *ngIf="counter === 1">
+                <form class="login-form" (ngSubmit)="onNext()">
+                    <input placeholder="Vorname" name="firstName" class="login-email-input" type="text">
+                    <input placeholder="Nachname" name="lastName" class="login-email-input" type="text">
+                    <button class="login-button" type="submit">Weiter</button>
+                    <button class="login-button" type="button" (click)="onPrevious()">Zurück</button>
+                </form>
+            </div>
+            <div class="action-div" *ngIf="counter === 2">
+                <form class="login-form">
+                    <input placeholder="Adresse" name="address" class="login-email-input" type="text">
+                    <input placeholder="Telefon Nummer" name="phoneNumber" class="login-email-input" type="text">
+                    <button class="login-button" type="submit">Registrieren</button>
+                    <button class="login-button" type="button" (click)="onPrevious()">Zurück</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section> -->

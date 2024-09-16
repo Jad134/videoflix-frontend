@@ -1,0 +1,416 @@
+@import '../../../styles.scss';
+
+section {
+    // overflow-x: hidden;
+    // display: flex;
+    // flex-direction: column;
+    // width: 100vw;
+    // font-family: $nunito;
+    //man kann auch section den gesamten style nehmen und .video-row eine with von fit-content und .content overflow: scroll geben
+
+
+    overflow-x: auto;
+    display: flex;
+    /* flex-direction: column; */
+    /* width: 100vw; */
+    font-family: "Nunito";
+    /* width: 100vw;*/
+}
+
+.video-row {
+    display: flex;
+    gap: 8px;
+    // overflow-x: auto;
+    // overflow-y: clip;
+    min-width: 85vw;
+    flex-wrap: wrap;
+    // HIER overflow
+}
+
+.video-box {
+    //border: 1px white solid;
+    width: 250px;
+    height: 180px;
+    border-radius: 4px;
+    cursor: pointer;
+    position: relative;
+}
+
+.info-box {
+    background-color: rgb(29, 29, 29);
+    height: 130%;
+    position: absolute;
+    top: 20px;
+    width: 100%;
+    z-index: 600;
+    opacity: 0;
+    transform: scale(1);
+    transition: transform 0.4s ease-in-out, opacity 0.4s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    border-radius: 4px;
+  //transform-origin: left center;
+}
+
+.transform-left-center{
+    transform-origin: left center;
+}
+
+.hover-video {
+    width: 100%;
+    position: absolute;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+}
+
+.info-box.scale-up {
+    opacity: 1;
+    transform: scale(1.6);
+    pointer-events: auto;
+}
+
+.info-box.scale-out {
+    opacity: 0;
+    transform: scale(1.0);
+    pointer-events: none;
+}
+
+.action-button-container {
+    padding-top: 150px;
+    padding-left: 8px;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.play-icon-button {
+    font-size: 24px;
+    border-radius: 100%;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    transition: filter 0.3s ease-in-out;
+    height: 32px;
+    width: 32px;
+    justify-content: center;
+
+    &:hover {
+        filter: brightness(0.8);
+    }
+}
+
+.play_arrow {
+    font-size: 32px !important;
+}
+
+.title-and-description-hover {
+    padding-left: 8px;
+    display: flex;
+    flex-direction: column;
+
+    >h2{
+        margin-block-start: 8px;
+        margin-block-end: 0px;
+        color:white;
+    }
+}
+
+.category-headline {
+    color: white;
+
+}
+
+.content {
+    padding-bottom: 50px;
+    padding-inline: 48px;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    //HIER overflow
+}
+
+.video {
+    width: 250px;
+    height: 180px;
+}
+
+
+.video-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.expanded-video {
+    width: 100%;
+    height: auto;
+    /* max-height: 80%;*/
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.video-box video {
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.play-icon {
+    font-size: 100px;
+    position: absolute;
+    color: rgb(229, 9, 20);
+    width: 100px;
+    height: 100px;
+    border: 3px solid rgb(229, 9, 20);
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 24px;
+    transition: opacity 0.8s ease-out;
+    /* Übergangseffekt für opacity */
+    position: absolute;
+    top: 22%;
+    left: 40%;
+
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.playing .play-icon {
+    display: none;
+}
+
+.paused .play-icon {
+    display: flex;
+}
+
+.fade-in {
+    opacity: 1;
+}
+
+.fade-out {
+    opacity: 0;
+}
+
+
+.video-info-container {
+    width: 800px;
+    height: 700px;
+    background: linear-gradient(to bottom, #000000, #111111, #000000, #000000, #1b1b1b);
+    display: flex;
+    align-items: baseline;
+    /* justify-content: space-between; */
+    position: relative;
+    flex-direction: column;
+}
+
+.video-info {
+    width: 100%;
+
+    >h1 {
+        color: wheat;
+    }
+}
+
+.video-title {
+    color: white;
+    font-size: 32px;
+    font-family: $nunito;
+    margin-block-start: 0;
+    margin-block-end: 0;
+}
+
+.headline-and-setting {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-inline: 24px;
+    overflow: hidden;
+
+}
+
+.quality-select {
+    appearance: none;
+    height: 32px;
+    border: none;
+    border-radius: 24px;
+    width: 100px;
+    text-align: center;
+    background-color: darkred;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    font-family: 'Nunito';
+    cursor: pointer;
+    outline: none;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+    transition: filter 0.3s ease-in-out;
+
+    &:hover {
+        filter: brightness(1.3);
+    }
+}
+
+.quality-select.slide-out {
+    animation: slideOutRight 0.5s forwards;
+    /* Animation nach rechts */
+}
+
+.slide-in {
+    animation: slideInRightToLeft 0.5s forwards;
+    display: inline-block;
+    margin-right: 5px;
+    opacity: 0;
+}
+
+.quality-select.active {
+    filter: brightness(1.5);
+    border: 2px solid #ffffff;
+}
+
+.description-container {
+    color: white;
+    padding-inline: 24px;
+}
+
+.favorite-container {
+    padding-inline: 24px;
+    display: flex;
+    justify-content: end;
+}
+
+.favorite-icon {
+    font-size: 42px;
+    transition: color 0.3s ease;
+    cursor: pointer;
+}
+
+.favorite-icon-infobox {
+    font-size: 38px;
+    transition: color 0.3s ease;
+    cursor: pointer;
+}
+
+.favorite-active {
+    color: red;
+}
+
+.favorite-inactive {
+    color: white;
+}
+
+
+.favorite-icon.animate {
+    animation: pop 0.3s ease-in-out;
+}
+
+.favorite-icon-infobox.animate {
+    animation: pop 0.3s ease-in-out;
+}
+
+.margin-end{
+    margin-bottom: 120px;
+}
+
+
+mat-icon {
+    -webkit-user-select: none;
+    user-select: none;
+    background-repeat: no-repeat;
+    display: inline-block;
+    fill: currentColor;
+    height: auto;
+    width: auto;
+    overflow: hidden;
+}
+
+
+
+/*Button Animations*/
+@keyframes slideOutRight {
+    0% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+}
+
+@keyframes slideInRightToLeft {
+    0% {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes pop {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.5);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+
+/*ScrollBar*/
+
+::-webkit-scrollbar {
+    height: 12px;
+    /* Höhe des horizontalen Scrollbalkens */
+    background-color: #282828;
+    /* Hintergrundfarbe des Scrollbalkens */
+}
+
+/* Der "Daumen", der verschoben wird */
+::-webkit-scrollbar-thumb {
+    background-color: $main-red;
+    /* Farbe des Scroll-Thumbs */
+    border-radius: 10px;
+    /* Abgerundete Ecken für den Daumen */
+}
+
+/* Der Daumen, wenn er aktiv ist (wenn darauf geklickt oder darübergefahren wird) */
+::-webkit-scrollbar-thumb:hover {
+    filter: brightness(1.3);
+    cursor: pointer;
+}
+
+/* Optional: Styling der Scrollleisten-Ecke (bei horizontalem und vertikalem Scrollen) */
+::-webkit-scrollbar-corner {
+    background-color: #555;
+}
+
+/* Optional: Styling der Schienen, in denen der Daumen läuft */
+::-webkit-scrollbar-track {
+    background-color: #555;
+    ;
+    /* Hintergrundfarbe der Scroll-Leiste */
+    border-radius: 10px;
+}
+
+/* Optional: Styling der Trackteile (Segmentierungen) */
+::-webkit-scrollbar-track-piece {
+    background-color: #555;
+    border-radius: 10px;
+}

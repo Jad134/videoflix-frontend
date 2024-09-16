@@ -1,0 +1,19 @@
+@import '../../styles.scss';
+
+section{
+    width: 100vw;
+    background: $background-design;
+    min-height: 100vh;
+}
+
+.full-width{
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    align-items: center;
+}
+
+.max-width{
+    max-width: 1920px;
+    width: 100%;
+}

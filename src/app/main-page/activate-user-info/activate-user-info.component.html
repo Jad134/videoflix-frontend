@@ -1,0 +1,49 @@
+<section>
+    <div class="register-succes-bg">
+        <div class="success-registered-info-container">
+            <h1 [ngStyle]="{
+                'display': resendActivationLinkStatus || userNotFound || userAlreadyActivated ? 'none' : 'flex',
+              }">Account aktivieren</h1>
+            <form class="login-form2" [ngStyle]="{
+                'display': resendActivationLinkStatus || userNotFound || userAlreadyActivated ? 'none' : 'flex',
+                'pointer-events': resendActivationLinkStatus ? 'none' : 'auto'
+              }">
+                <p class="info1"> Wir haben Ihnen eine Bestätigungs-E-Mail gesendet. <br> Bitte überprüfen Sie Ihr
+                    Postfach und folgen Sie dem darin enthaltenen Link, um Ihr Profil zu aktivieren.</p>
+                <p class="info1">Sie können auch einen neuen Link anfordern. Geben sie dazu bitte ihre registrierte
+                    E-Mail Adresse ein.</p>
+                <input [(ngModel)]="this.sharedService.currentMail" placeholder="Email-Adresse" name="mail" class="login-email-input" type="text">
+                <button (click)="getActivateLink()" class="final-login-button">Aktivierungslink anfordern</button>
+            </form>
+            <div class="success-mail-container" [ngStyle]="{
+                'display': resendActivationLinkStatus ? 'flex' : 'none',
+                'pointer-events': resendActivationLinkStatus ? 'auto' : 'none'
+              }">
+                <h1 class="success-mail" >Link erfolgreich zugesendet</h1>
+                <button (click)="resetLinkStatus()" class="final-login-button"> Erneut anfordern</button>
+            </div>
+            <div class="user-not-found" [ngStyle]="{
+                'display': userNotFound ? 'flex' : 'none',
+                'pointer-events': userNotFound ? 'auto' : 'none'
+              }">
+                <h1 class="user-not-found-headline" >User nicht gefunden</h1>
+                <p>Bitte geben sie die richtige E-Mail Adresse an oder Registrieren sie sich.</p>
+                <button (click)="resetLinkStatus()" class="final-login-button"> E-Mail Adresse kontrollieren</button>
+                <button (click)="routeToRegisterPage()" class="final-login-button"> Registrieren</button>
+            </div>
+            <div class="user-not-found" [ngStyle]="{
+                'display': userAlreadyActivated ? 'flex' : 'none',
+                'pointer-events': userAlreadyActivated ? 'auto' : 'none' 
+              }">
+                <h1 class="success-mail" >Ihr Account ist bereits aktiviert</h1>
+                <p>Sie werden in {{ countdown }} Sekunden weitergeleitet</p>
+
+            </div>
+          
+
+        </div>
+    </div>
+    <div *ngIf="loading" class="spinner-container">
+        <div class="spinner"></div>
+    </div>
+</section>

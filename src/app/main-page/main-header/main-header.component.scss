@@ -1,0 +1,236 @@
+@import './../../../styles.scss';
+
+section {
+    width: 100%;
+    font-family: $nunito;
+}
+
+.main {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 40px;
+    padding-inline: 48px;
+}
+
+.headline {
+    font-size: 40px;
+    font-weight: bold;
+    color: $main-red;
+
+    >h1 {
+        margin-block-start: 0;
+        margin-block-end: 0;
+    }
+}
+
+.login-button {
+    font-family: "Nunito";
+    border: 0;
+    cursor: pointer;
+    fill: currentColor;
+    position: relative;
+    vertical-align: text-top;
+    width: auto;
+    font-size: 20px;
+    min-height: 2rem;
+    padding: 0.25rem 1rem;
+    border-radius: 0.25rem;
+    background: $main-red;
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+        background: $hover-red;
+        /* Slightly darker red */
+    }
+}
+
+.buttons-container {
+    display: flex;
+    align-items: center;
+    gap: 56px;
+}
+
+.link-container {
+    display: flex;
+    gap: 24px;
+}
+
+.favorites {
+    font-size: 24px;
+    color: $main-red;
+    font-weight: bold;
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    transition: color 0.3s ease-out;
+    /* Hinzufügen von Übergang für Farbe */
+
+    &::after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        transform: scaleX(0);
+        border-radius: 5px;
+        height: 2px;
+        bottom: 0;
+        left: 0;
+        background: $main-red;
+        transform-origin: bottom right;
+        transition: transform 0.25s ease-out;
+    }
+
+    &:hover {
+        color: lighten($main-red, 10%);
+    }
+
+
+    &:hover::after {
+        transform: scaleX(1);
+        transform-origin: bottom left;
+
+    }
+}
+
+.user-button {
+    border-radius: 100%;
+    height: 45px;
+    width: 45px;
+    border: 2px solid $main-red;
+    background-color: #202020;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease, filter 0.3s ease;
+
+    &:hover {
+        filter: brightness(1.2);
+    }
+}
+
+.person-icon {
+    color: white;
+}
+
+.user-dialog {
+    width: 200px;
+    height: 200px;
+    background-color: wheat;
+}
+
+.blured-background {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    backdrop-filter: blur(4px);
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+}
+
+.blured-background.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+
+.user-actions {
+    border-radius: 24px 0 0 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    background-color: rgb(51, 50, 50);
+    width: fit-content;
+    height: fit-content;
+    position: absolute;
+    right: 0;
+    top: 80px;
+    padding: 20px;
+    box-shadow: 1px 1px 10px black;
+    transform: translateX(100%);
+    opacity: 0;
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+
+.user-actions.show {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.user-actions.enter {
+    animation: slideIn 0.3s ease-in-out forwards;
+}
+
+.user-actions.leave {
+    animation: slideOut 0.3s ease-in-out forwards;
+}
+
+.user-action-btn {
+    font-family: $nunito;
+    font-size: 18px;
+    border: 0;
+    width: 200px;
+    height: 50px;
+    border-radius: 100px;
+    color: white;
+    /* background-color: rgb(229, 9, 20); */
+    background-color: #252424;
+    box-shadow: 1px 1px 10px black;
+    transition: ease-in-out 125ms;
+
+    &:hover {
+        background-color: $hover-red;
+        cursor: pointer;
+    }
+}
+
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideOut {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+
+    to {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+}
+
+
+/* Responsive */
+
+@media(max-width: 630px) {
+
+    .link-container {
+        display: none;
+    }
+
+    .user-button{
+        display: none;
+    }
+    
+    .main{
+        justify-content: center;
+    }
+}

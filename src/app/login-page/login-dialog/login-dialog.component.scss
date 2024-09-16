@@ -1,0 +1,256 @@
+@import '../../../styles.scss';
+
+section {
+    background: $background-design;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-container-bg {
+    background-color: rgba(255, 255, 255, 0.1);
+    /* padding: 138px; rausnehmen?*/
+    height: 50%;
+    width: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    border-radius: 32px;
+}
+
+.header {
+    position: absolute;
+    width: 100%;
+    top: 0;
+}
+
+.login-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    margin-top: 32px;
+}
+
+.login-email-input {
+    background-color: $input-color !important;
+    width: 350px;
+    height: 42px;
+    border-radius: 0.25rem;
+    border: none;
+    background-color: #d7d7d7 !important;
+    padding-left: 24px;
+    font-size: 16px;
+    font-family: $nunito;
+
+    &:focus-visible {
+        outline: none;
+    }
+
+    &::placeholder {
+        font-size: 16px;
+    }
+}
+
+.login-password-input {
+    background-color: $input-color;
+    width: 350px;
+    height: 42px;
+    border-radius: 0.25rem;
+    border: none;
+    background-color: #d7d7d7;
+    padding-left: 24px;
+    font-size: 16px;
+    font-family: $nunito;
+
+    &:focus-visible {
+        outline: none;
+    }
+
+    &::placeholder {
+        font-size: 16px;
+    }
+}
+
+.login-button {
+    border: 0;
+    cursor: pointer;
+    font-size: 24px;
+    font-family: $nunito;
+    padding: 0.25rem 1rem;
+    border-radius: 0.25rem;
+    background: rgb(229, 9, 20);
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    gap: 8px;
+
+    &:hover {
+        background: $hover-red;
+        /* Slightly darker red */
+    }
+
+}
+
+.action-div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+
+    align-items: flex-start;
+
+    >h2 {
+        color: white;
+        font-size: 32px;
+        font-family: $nunito;
+    }
+
+
+}
+
+.link-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 8px;
+
+    >a {
+        text-decoration: none;
+        color: white;
+        transition: color 0.3s ease;
+        width: 100%;
+        text-align: center;
+
+        &:hover {
+            color: $hover-red;
+        }
+    }
+}
+
+.invalid-login {
+    color: red;
+}
+
+/*Loading Screen*/
+.spinner-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgb(102 102 102 / 24%);
+    z-index: 9999;
+}
+
+.spinner {
+    border: 16px solid black;
+    border-top: 16px solid $main-red;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/*Responsive*/
+
+@media(max-width: 1000px) {
+    .login-container-bg {
+        width: 65%;
+    }
+}
+
+@media(max-width: 600px) {
+    .login-container-bg {
+        width: 85%;
+    }
+}
+
+@media(max-width: 500px) {
+    .login-email-input {
+        width: 250px;
+    }
+
+    .login-password-input {
+        width: 250px;
+    }
+}
+
+@media(max-width: 400px) {
+    .login-email-input {
+        width: 250px;
+    }
+
+    .login-password-input {
+        width: 250px;
+    }
+
+    .login-container-bg {
+        height: 45%;
+    }
+
+    .action-div {
+        >h2 {
+            margin-block-end: 0;
+        }
+    }
+}
+
+@media(max-width: 350px) {
+    .login-email-input {
+        width: 200px;
+    }
+
+    .login-password-input {
+        width: 200px;
+    }
+}
+
+@media(max-height: 810px) {
+    .action-div {
+        >h2 {
+            margin-block-end: 0;
+        }
+    }
+
+    .login-form {
+        margin-top: 0;
+    }
+}
+
+@media(max-height: 760px) {
+    .action-div {
+        >h2 {
+            margin-block-end: 0;
+            margin-block-start: 8px;
+        }
+    }
+
+    .login-container-bg {
+        height: 360px;
+    }
+}

@@ -1,0 +1,23 @@
+@import '../../../styles.scss';
+
+section{
+  
+    background: $background-design;
+}
+
+.container{
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.footer{
+    color: red;
+}
+
+.app-footer{
+    position: absolute;
+    bottom: 0;
+}

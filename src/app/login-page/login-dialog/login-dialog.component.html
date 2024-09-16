@@ -1,0 +1,32 @@
+<section>
+    <app-login-header [hideLogInButton]="hideLogInButton" class="header"></app-login-header>
+    <div class="login-container">
+        <div class="login-container-bg">
+
+            <div class="action-div">
+                <h2>Einloggen</h2>
+                <form class="login-form" action="">
+                    <input [(ngModel)]="sharedService.currentMail" name="email" placeholder="E-Mail-Adresse"
+                        class="login-email-input" type="email">
+                    <input [(ngModel)]="password" name="password" placeholder="Passwort" class="login-password-input"
+                        type="password">
+                    <button (click)="logIn()" class="login-button">Einloggen</button>
+                </form>
+                <div class="link-container">
+                    <a [routerLink]="['/reset-password']">Passwort vergessen?</a>
+                    <a href="">Registrieren</a>
+                    <span [ngStyle]="{
+                        'opacity': mailOrPasswordWrong ? '1' : '0',
+                      }" class="invalid-login">*E-Mail oder Passwort falsch</span>
+                </div>
+
+            </div>
+        </div>
+
+
+    </div>
+    <div *ngIf="loading" class="spinner-container">
+        <div class="spinner"></div>
+    </div>
+</section>
+<app-login-footer></app-login-footer>

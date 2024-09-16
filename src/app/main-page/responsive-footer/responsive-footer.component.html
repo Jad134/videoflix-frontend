@@ -1,0 +1,17 @@
+<div class="footer">
+    <div (click)="toggleUserActions()" class="user-button">
+        <mat-icon class="person-icon">person</mat-icon>
+    </div>
+    <div>
+        <mat-icon (click)="routeToFavorites()" [ngStyle]="{'color': showFavorites ? 'red' : 'white',}" class="favorite-icon">favorite</mat-icon>
+    </div>
+    <div> <mat-icon (click)="routeToHome()" [ngStyle]="{'color': showFavorites ? 'white' : 'red',}" class="home-icon">home</mat-icon></div>
+</div>
+
+<div [ngClass]="{'show': showUserActions}" class="blured-background" (click)="toggleUserActions()">
+    <div [ngClass]="{'show': showUserActions}" class="user-actions" (click)="$event.stopPropagation()">
+        <button (click)="logout()" class="user-action-btn">Ausloggen</button>
+        <button (click)="openInNewTab('/impressum')" class="user-action-btn">Impressum</button>
+        <button (click)="openInNewTab('/data-protection')" class="user-action-btn">Datenschutz</button>
+    </div>
+</div>

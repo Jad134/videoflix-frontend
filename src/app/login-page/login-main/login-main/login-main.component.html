@@ -1,0 +1,15 @@
+
+<section class="login-main-section">
+    <div class="text-container">
+        <h1 class="headline">Unbegrenzt Filme, Serien und mehr</h1>
+        <p class="first-text">Genießen Sie VideoFlix, wo immer Sie möchten. Jederzeit kostenlos.</p>
+        <p class="second-text">Sind Sie startklar? Geben Sie Ihre E-Mail-Adresse ein, um ein Konto zu erstellen</p>
+    </div>
+    <div class="responsive-text-container">
+        <p class="second-responsive-text">Sind Sie startklar?  <br>Geben Sie Ihre E-Mail-Adresse ein, um ein Konto zu erstellen</p>
+    </div>
+    <div class="register-container">
+        <input [(ngModel)]="email" placeholder="E-Mail-Adresse" class="register-email-input" type="text">
+        <button (click)="checkIfMailExist()" class="letsgo-btn">Loslegen  <mat-icon>arrow_forward_ios</mat-icon></button>
+    </div> 
+</section>

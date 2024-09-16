@@ -1,0 +1,87 @@
+<section>
+    <div class="content">
+        <ng-container *ngFor="let category of getCategories()">
+            <h2 class="category-headline">{{ category }}</h2>
+            <div class="video-row">
+                <ng-container *ngFor="let video of groupedVideos[category]">
+                    <div  (mouseenter)=" onVideoMouseHover(video, hoveredVideo, $event)"
+                        (mouseleave)="onVideoMouseLeave(video, hoveredVideo)" class="video-box">
+                        <video (click)="expandVideo(videoElement, video.video_file, video)" #videoElement class="video">
+                            <source [src]="video.video_file" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <div [ngClass]="{'scale-up': video.showInfo, 'scale-out': !video.showInfo, 'transform-left-center': mouseIsNearEdge}" class="info-box">
+                            <video #hoveredVideo (click)="expandVideo(videoElement, video.video_file, video)"
+                                class="hover-video">
+                                <source [src]="video.video_file" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                            <div class="action-button-container">
+                                <div (click)="expandVideo(videoElement, video.video_file, video)"
+                                    class="play-icon-button">
+                                    <mat-icon class="play_arrow">play_arrow</mat-icon>
+                                </div>
+
+                                <mat-icon (click)="addFavfromHoverBox(video.id)"
+                                    [ngClass]="isFavorite(video.id) ? 'favorite-active' : 'favorite-inactive'"
+                                    class="favorite-icon-infobox">favorite</mat-icon>
+                            </div>
+                            <div class="title-and-description-hover">
+                                <h2>{{video.title}}</h2>
+                               
+                            </div>
+                        </div>
+                    </div>
+                </ng-container>
+                <div>
+                </div>
+            </div>
+        </ng-container>
+        <div class="margin-end"></div>
+    </div>
+
+
+    <!-- Overlay for expanded video -->
+    <div class="video-overlay" *ngIf="expandedVideoSrc" (click)="closeVideo($event)">
+        <div class="video-info-container">
+            <video #sizeVideo class="expanded-video" controls [src]="expandedVideoSrc" (click)="onVideoClick($event)"
+                (play)="onPlay()" (pause)="onPause()"></video>
+
+            <mat-icon *ngIf="!isPlaying" (click)="togglePlay($event)" class="play-icon">play_arrow</mat-icon>
+            <mat-icon [ngClass]="{ 'fade-in': isPlaying, 'fade-out': !showPauseButton}" #pauseButton
+                (click)="togglePlay($event)" class="play-icon">pause</mat-icon>
+
+            <div class="video-info">
+                <div class="headline-and-setting">
+                    <h1 class="video-title">{{currentVideo.title}}</h1>
+                    <div class="quality-button-container">
+                        <button [ngClass]="{'slide-out': hideQualitybutton, 'slide-in' :!hideQualitybutton}"
+                            (click)="slideOutButton()" class="quality-select">Quality</button>
+                        <button [ngClass]="{ 'active': isActiveQuality('low'), 'slide-out': !showQualitySelectButton}"
+                            value="low" (click)="changeVideoQuality('low')" *ngIf="showQualitySelectButton"
+                            class="quality-select slide-in">Low</button>
+                        <button
+                            [ngClass]="{ 'active': isActiveQuality('medium'), 'slide-out': !showQualitySelectButton}"
+                            value="medium" (click)="changeVideoQuality('medium')" *ngIf="showQualitySelectButton"
+                            class="quality-select slide-in">Medium</button>
+                        <button [ngClass]="{ 'active': isActiveQuality('high'), 'slide-out': !showQualitySelectButton}"
+                            value="high" (click)="changeVideoQuality('high')" *ngIf="showQualitySelectButton"
+                            class="quality-select slide-in">High</button>
+                    </div>
+                </div>
+                <div class="description-container">
+                    <h2>Description:</h2>
+                    <p>{{currentVideo.description}}</p>
+                </div>
+
+                <div class="favorite-container">
+                    <mat-icon (click)="addFav()"
+                        [ngClass]="isFavorite(currentVideo.id) ? 'favorite-active' : 'favorite-inactive'"
+                        class="favorite-icon">favorite</mat-icon>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</section>

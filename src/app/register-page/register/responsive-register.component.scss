@@ -1,0 +1,29 @@
+@media(max-width: 1300px) {
+    .register-container-bg {
+        width: 600px;
+    }
+}
+
+@media(max-width: 630px) {
+    .register-container-bg {
+        width: 400px;
+    }
+
+    .login-email-input{
+        width: 300px;
+    }
+}
+
+@media(max-width: 420px) {
+    .register-container-bg {
+        width: 300px;
+    }
+
+    .login-email-input{
+        width: 200px;
+    }
+
+    .address-headline{
+        font-size: 26px !important;
+    }
+}

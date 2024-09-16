@@ -1,0 +1,152 @@
+@import './../../../../styles.scss';
+
+.login-main-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 250px;
+    font-family: $nunito;
+}
+
+.headline {
+    font-size: 56px;
+    margin-block-start: 0;
+    margin-block-end: 0;
+}
+
+.text-container {
+    text-align: center
+}
+
+.first-text {
+    font-size: 24px;
+}
+
+.second-text {
+    font-size: 19px;
+}
+
+.register-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.register-email-input {
+    width: 350px;
+    height: 42px;
+    border-radius: 0.25rem;
+    border: none;
+    background-color: #d7d7d7;
+    padding-left: 24px;
+    font-size: 16px;
+    font-family: $nunito;
+
+    &:focus-visible {
+        outline: none;
+    }
+
+    &::placeholder {
+        font-size: 16px;
+    }
+}
+
+.letsgo-btn {
+    background: $main-red;
+    height: 44px;
+    border: 0;
+    cursor: pointer;
+    fill: currentColor;
+    width: auto;
+    font-size: 24px;
+    font-family: $nunito;
+    padding: 0.25rem 1rem;
+    border-radius: 0.25rem;
+    background: rgb(229, 9, 20);
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    &:hover {
+        background: $hover-red;
+        /* Slightly darker red */
+    }
+}
+
+.responsive-text-container {
+    display: none;
+}
+
+
+/*Responsive*/
+
+@media(max-width: 950px) {
+    .headline {
+        font-size: 46px;
+    }
+
+    .first-text {
+        font-size: 22px;
+    }
+
+    .second-text {
+        font-size: 17px;
+    }
+}
+
+@media(max-width:800px) {
+    .text-container {
+        margin: 0 24px 0 24px;
+    }
+
+    .headline {
+        font-size: 40px;
+    }
+
+    .first-text {
+        font-size: 21px;
+    }
+}
+
+@media(max-width:570px) {
+    .text-container {
+        margin: 0 24px 0 24px;
+    }
+
+    .second-text{
+        display: none ;
+    }
+
+    .headline {
+        font-size: 28px;
+    }
+
+    .register-container {
+        flex-direction: column;
+        gap: 24px;
+    }
+
+    .login-main-section {
+        margin-top: 180px;
+    }
+
+    .responsive-text-container {
+        display: contents;
+    }
+
+    .second-responsive-text{
+        font-size: 17px;
+        text-align: center;
+        margin-block-start: 0;
+    }
+}
+
+@media(max-width:390px) {
+     .register-email-input{
+        width: 280px;
+     }
+}
