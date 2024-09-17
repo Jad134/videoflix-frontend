@@ -1,7 +1,11 @@
 @import '../../../styles.scss';
 
 section {
-    background: $background-design;
+    background:
+        linear-gradient(180deg, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.6) 50%, rgba(0, 0, 0, 0.8) 100%),
+        url('/assets/img/login.jpeg');
+    background-repeat: no-repeat;
+    background-size: cover;
     height: 100vh;
     display: flex;
     justify-content: center;
@@ -9,7 +13,7 @@ section {
 }
 
 .login-container-bg {
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: white;
     /* padding: 138px; rausnehmen?*/
     height: 50%;
     width: 40%;
@@ -39,15 +43,15 @@ section {
     flex-direction: column;
     gap: 32px;
     margin-top: 32px;
+    align-items: center;
 }
 
 .login-email-input {
-    background-color: $input-color !important;
+    background: none;
     width: 350px;
     height: 42px;
-    border-radius: 0.25rem;
-    border: none;
-    background-color: #d7d7d7 !important;
+    border-radius: 12px;
+    border: 1px solid $main-blue;
     padding-left: 24px;
     font-size: 16px;
     font-family: $nunito;
@@ -58,16 +62,16 @@ section {
 
     &::placeholder {
         font-size: 16px;
+        color: $main-blue
     }
 }
 
 .login-password-input {
-    background-color: $input-color;
+    background: none;
     width: 350px;
     height: 42px;
-    border-radius: 0.25rem;
-    border: none;
-    background-color: #d7d7d7;
+    border-radius: 12px;
+    border: 1px solid $main-blue;
     padding-left: 24px;
     font-size: 16px;
     font-family: $nunito;
@@ -78,24 +82,27 @@ section {
 
     &::placeholder {
         font-size: 16px;
+        color: $main-blue
     }
 }
 
 .login-button {
+    width: 151px;
     border: 0;
     cursor: pointer;
     font-size: 24px;
-    font-family: $nunito;
-    padding: 0.25rem 1rem;
-    border-radius: 0.25rem;
-    background: rgb(229, 9, 20);
+    font-family: "Nunito";
+    border-radius: 40px;
+    background: rgb(46, 62, 223);
     color: rgb(255, 255, 255);
     font-weight: bold;
     transition: background-color 0.3s ease;
     gap: 8px;
+    padding: 12px 24px 12px 24px;
+
 
     &:hover {
-        background: $hover-red;
+        background: $button-hover;
         /* Slightly darker red */
     }
 
@@ -111,7 +118,7 @@ section {
     align-items: flex-start;
 
     >h2 {
-        color: white;
+        color: $main-blue;
         font-size: 32px;
         font-family: $nunito;
     }
@@ -124,17 +131,37 @@ section {
     display: flex;
     flex-direction: column;
     text-align: center;
+    align-items: center;
     gap: 8px;
 
     >a {
         text-decoration: none;
-        color: white;
+        color: $main-blue;
         transition: color 0.3s ease;
         width: 100%;
         text-align: center;
+        font-weight: bold;
 
         &:hover {
-            color: $hover-red;
+            color: $button-hover;
+        }
+    }
+}
+
+.new-text {
+    display: flex;
+    align-items: center;
+gap: 24px;
+    >a {
+        text-decoration: none;
+        color: $main-blue;
+        transition: color 0.3s ease;
+
+        text-align: center;
+        font-weight: bold;
+
+        &:hover {
+            color: $button-hover;
         }
     }
 }
@@ -159,7 +186,7 @@ section {
 
 .spinner {
     border: 16px solid black;
-    border-top: 16px solid $main-red;
+    border-top: 16px solid $main-blue;
     border-radius: 50%;
     width: 40px;
     height: 40px;
