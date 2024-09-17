@@ -1,5 +1,9 @@
 .login-section{
-    background: linear-gradient(to bottom, #333333, #000000);  //#616060  <- vorher
-    color: #fff; /* Weißer Text für besseren Kontrast */
+    background: 
+    linear-gradient(180deg, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.6) 50%, rgba(0, 0, 0, 0.8) 100%),
+    url('/assets/img/startpage.jpeg'); 
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: #fff;
     height: 100vh;
 }

@@ -1,13 +1,13 @@
 <section>
     <div class="main">
         <div class="headline">
-            <h1 (click)="routeToHome()">VideoFlix</h1>
+            <img src="../../../assets/img/Logo.png" alt="" (click)="routeToHome()">
         </div>
         <div>
             <button [ngStyle]="{
                 'opacity': hideLogInButton ? '0' : '1',
                 'pointer-events': hideLogInButton ? 'none' : 'auto'
-              }"  (click)="routeToLogIn()" class="login-button">Einloggen</button>
+              }"  (click)="routeToLogIn()" class="login-button">Log in</button>
         </div>
     </div>
 </section>

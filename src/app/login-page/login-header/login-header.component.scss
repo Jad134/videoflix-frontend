@@ -34,15 +34,15 @@ section {
     width: auto;
     font-size: 20px;
     min-height: 2rem;
-    padding: 0.25rem 1rem;
-    border-radius: 0.25rem;
-    background: $main-red;
+    padding: 12px 24px 12px 24px;
+    border-radius: 40px;
+    background: $button-blue;
     color: rgb(255, 255, 255);
     font-weight: bold;
     transition: background-color 0.3s ease;
 
     &:hover {
-        background: $hover-red;
+        background: $button-hover;
         /* Slightly darker red */
     }
 }
