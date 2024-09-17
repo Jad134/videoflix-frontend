@@ -21,6 +21,7 @@ export class LoginDialogComponent {
     mailOrPasswordWrong: boolean = false;
     loading :boolean = false;
     hideLogInButton = true;
+    isPasswordVisible: boolean = false;
 
     constructor(private router: Router) {}
 
@@ -41,4 +42,8 @@ export class LoginDialogComponent {
 
 
     }
+
+    togglePasswordVisibility() {
+        this.isPasswordVisible = !this.isPasswordVisible;
+      }
 }

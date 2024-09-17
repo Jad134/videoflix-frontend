@@ -246,6 +246,17 @@ input[type="number"]::-webkit-outer-spin-button {
     }
 }
 
+.pw-input-container{
+    position: relative;
+}
+
+.visibility-icon{
+    position: absolute;
+    right: 20px;
+    top: 12px;
+    cursor: pointer;
+}
+
 /*Loading Screen*/
 .spinner-container {
     display: flex;

@@ -42,10 +42,18 @@
             <div class="action-div">
                 <h2>Password</h2>
                 <form #pwForm="ngForm" class="login-form2">
-                    <input required [(ngModel)]="pw1" placeholder="Password" name="firstPassword"
-                        class="login-email-input" type="password">
-                    <input required [(ngModel)]="pw2" placeholder="Confirm password" name="repeatPassword"
-                        class="login-email-input" type="password">
+                    <div class="pw-input-container">
+                        <input [type]="isPasswordVisible ? 'text' : 'password'" required [(ngModel)]="pw1" placeholder="Password" name="firstPassword"
+                        class="login-email-input" >
+                        <img (click)="togglePasswordVisibility()" class="visibility-icon" src="../../../assets/img/visibility.png" alt="">
+                    </div>
+                    <div class="pw-input-container">
+                        <input required [(ngModel)]="pw2" placeholder="Confirm password" name="repeatPassword"
+                        class="login-email-input" [type]="isPasswordVisible ? 'text' : 'password'">
+                        <img (click)="togglePasswordVisibility()" class="visibility-icon" src="../../../assets/img/visibility.png" alt="">
+                    </div>
+                    
+                   
                     <button [disabled]="!pwForm.valid || pw1 !== pw2" (click)="register()" class="login-button"
                         type="submit">Register</button>
                     <button class="login-button" type="button" (click)="onPrevious()">Back</button>

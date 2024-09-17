@@ -57,6 +57,7 @@ export class RegisterComponent {
     pw2!: string;
     loading = false;
     @ViewChild('mailInfo') mailInfo!: ElementRef<HTMLParagraphElement>;
+    isPasswordVisible: boolean = false;
 
     constructor(private router: Router) {
 
@@ -160,6 +161,11 @@ export class RegisterComponent {
     routeToLogIn() {
         this.router.navigate(['login'])
     }
+
+
+    togglePasswordVisibility() {
+        this.isPasswordVisible = !this.isPasswordVisible;
+      }
 }
 
 
