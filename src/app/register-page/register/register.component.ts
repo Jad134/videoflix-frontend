@@ -88,7 +88,7 @@ export class RegisterComponent {
             this.checkExistMail();
         } else {
             // Display a custom error message or take other actions
-            this.mailInfo.nativeElement.innerText = '*Bitte geben Sie eine gültige E-Mail-Adresse ein.';
+            this.mailInfo.nativeElement.innerText = '*Please enter a valid email address.';
             this.mailInfo.nativeElement.style.opacity = '1';
         }
     }
@@ -101,7 +101,7 @@ export class RegisterComponent {
         await this.authService.checkUsername(this.sharedService.currentMail).then(mailExist => {
             if (mailExist) {
                 this.mailInfo.nativeElement.style.opacity = '1'
-                this.mailInfo.nativeElement.innerText = '*Diese Email ist bereits vergeben';
+                this.mailInfo.nativeElement.innerText = '*This mail is already taken.';
             } else {
                 this.mailInfo.nativeElement.style.opacity = '0'
                 this.onNext()

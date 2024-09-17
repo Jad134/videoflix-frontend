@@ -1,7 +1,11 @@
 @import '../../../styles.scss';
 
 section {
-    background: $background-design;
+    background:
+        linear-gradient(180deg, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.6) 50%, rgba(0, 0, 0, 0.8) 100%),
+        url('/assets/img/signup.jpeg');
+    background-repeat: no-repeat;
+    background-size: cover;
     height: 100vh;
     display: flex;
     justify-content: center;
@@ -9,7 +13,8 @@ section {
 }
 
 .register-container-bg {
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: white;
+    color: $main-blue;
     /* padding: 138px; rausnehmen?*/
     height: 44%;
     width: 40%;
@@ -41,21 +46,23 @@ section {
     flex-direction: column;
     gap: 32px;
     margin-top: 32px;
+    align-items: center;
 }
 
 .login-form2 {
     display: flex;
     flex-direction: column;
-    gap: 32px;
+    gap: 22px;
+    align-items: center;
 }
 
 .login-email-input {
     background-color: $input-color;
     width: 350px;
     height: 42px;
-    border-radius: 0.25rem;
-    border: none;
-    background-color: #d7d7d7;
+    border-radius: 12px;
+    border: 1px solid $main-blue;
+    background: none;
     padding-left: 24px;
     font-size: 16px;
     font-family: $nunito;
@@ -66,6 +73,7 @@ section {
 
     &::placeholder {
         font-size: 16px;
+        color: $main-blue;
     }
 }
 
@@ -106,20 +114,25 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 .login-button {
+    width: 151px;
     border: 0;
     cursor: pointer;
     font-size: 24px;
     font-family: $nunito;
-    padding: 0.25rem 1rem;
-    border-radius: 0.25rem;
-    background: rgb(229, 9, 20);
+    border-radius: 40px;
+    background: $button-blue;
     color: rgb(255, 255, 255);
     font-weight: bold;
     transition: background-color 0.3s ease;
     gap: 8px;
 
+    padding: 12px 24px 12px 24px;
+
+
+
+
     &:hover {
-        background: $hover-red;
+        background: $button-hover;
         /* Slightly darker red */
     }
 
@@ -139,7 +152,7 @@ input[type="number"]::-webkit-outer-spin-button {
     align-items: flex-start;
 
     >h2 {
-        color: white;
+        color: $main-blue;
         font-size: 32px;
         font-family: $nunito;
     }
@@ -170,18 +183,17 @@ input[type="number"]::-webkit-outer-spin-button {
     padding-right: 24px;
     padding-left: 24px;
     text-align: center;
-
+ 
     >h1 {
-        color: white;
+        color:$main-blue;
         font-family: $nunito;
         font-size: 40px;
         margin-block-end: 0;
-        color: $main-red;
     }
 }
 
 .register-succes-bg {
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: white;
     display: flex;
     justify-content: center;
     align-items: baseline;
@@ -193,13 +205,13 @@ input[type="number"]::-webkit-outer-spin-button {
 .info1 {
     margin-block-start: 1em;
     margin-block-end: 0em;
-    color: white;
+    color: $main-blue;
 }
 
 .info2 {
     margin-block-start: 24px;
     margin-block-end: 24px;
-    color: white;
+    color: $main-blue
 }
 
 .final-login-button {
@@ -212,9 +224,9 @@ input[type="number"]::-webkit-outer-spin-button {
     width: auto;
     font-size: 20px;
     min-height: 2rem;
-    padding: 0.25rem 1rem;
-    border-radius: 0.25rem;
-    background: $main-red;
+    padding: 12px 24px 12px 24px;
+    border-radius: 40px;
+    background: $button-blue;
     color: rgb(255, 255, 255);
     font-weight: bold;
     transition: background-color 0.3s ease;
@@ -229,7 +241,7 @@ input[type="number"]::-webkit-outer-spin-button {
 .disabled {
     background-color: gray;
 
-    &:hover{
+    &:hover {
         background-color: gray;
     }
 }

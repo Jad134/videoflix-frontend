@@ -3,25 +3,25 @@
     <div class="login-container" [@animSlider]="counter">
         <div class="register-container-bg" *ngIf="counter === 0">
             <div class="action-div">
-                <h2>Email-Adresse</h2>
+                <h2>Email-Adress</h2>
                 <form #mailForm="ngForm" class="login-form">
-                    <input pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"  #emailInput="ngModel" required [(ngModel)]="sharedService.currentMail" placeholder="E-Mail-Adresse" name="email"
+                    <input pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"  #emailInput="ngModel" required [(ngModel)]="sharedService.currentMail" placeholder="E-Mail-Adress" name="email"
                         class="login-email-input" type="email">
-                    <button  [class.disabled]="!mailForm.valid" class="login-button" (click)="checkMail(emailInput)">Weiter</button>
-                    <p #mailInfo class="taken-mail-info">*Diese Email ist bereits vergeben</p>
+                    <button  [class.disabled]="!mailForm.valid" class="login-button" (click)="checkMail(emailInput)">Continue</button>
+                    <p #mailInfo class="taken-mail-info">*This mail is already taken</p>
                 </form>
             </div>
         </div>
         <div class="register-container-bg" *ngIf="counter === 1">
             <div class="action-div">
-                <h2>Namen</h2>
+                <h2>Name</h2>
                 <form #nameForm="ngForm" class="login-form2" (ngSubmit)="onNext()">
-                    <input required [(ngModel)]="firstName" placeholder="Vorname" name="firstName"
+                    <input required [(ngModel)]="firstName" placeholder="First Name" name="firstName"
                         class="login-email-input" type="text">
-                    <input required [(ngModel)]="lastName" placeholder="Nachname" name="lastName"
+                    <input required [(ngModel)]="lastName" placeholder="Last Name" name="lastName"
                         class="login-email-input" type="text">
-                    <button [disabled]="!nameForm.valid" class="login-button" type="submit">Weiter</button>
-                    <button class="login-button" type="button" (click)="onPrevious()">Zurück</button>
+                    <button [disabled]="!nameForm.valid" class="login-button" type="submit">Continue</button>
+                    <button class="login-button" type="button" (click)="onPrevious()">Back</button>
                 </form>
             </div>
         </div>
@@ -29,37 +29,36 @@
             <div class="action-div">
                 <h2 class="address-headline">Adresse & Nummer</h2>
                 <form #addressForm="ngForm" class="login-form2" (ngSubmit)="onNext()">
-                    <input required [(ngModel)]="address" placeholder="Adresse" name="address" class="login-email-input"
+                    <input required [(ngModel)]="address" placeholder="Adress" name="address" class="login-email-input"
                         type="text">
-                    <input [(ngModel)]="phoneNumber" placeholder="Telefon Nummer (optional)" name="phoneNumber"
+                    <input [(ngModel)]="phoneNumber" placeholder="Phone number (optional)" name="phoneNumber"
                         class="login-email-input" type="number">
-                    <button [disabled]="!addressForm.valid" class="login-button" type="submit">Weiter</button>
-                    <button class="login-button" type="button" (click)="onPrevious()">Zurück</button>
+                    <button [disabled]="!addressForm.valid" class="login-button" type="submit">Continue</button>
+                    <button class="login-button" type="button" (click)="onPrevious()">Back</button>
                 </form>
             </div>
         </div>
         <div class="register-container-bg" *ngIf="counter === 3">
             <div class="action-div">
-                <h2>Passwort</h2>
+                <h2>Password</h2>
                 <form #pwForm="ngForm" class="login-form2">
-                    <input required [(ngModel)]="pw1" placeholder="Passwort" name="firstPassword"
+                    <input required [(ngModel)]="pw1" placeholder="Password" name="firstPassword"
                         class="login-email-input" type="password">
-                    <input required [(ngModel)]="pw2" placeholder="Passwort wiederholen" name="repeatPassword"
+                    <input required [(ngModel)]="pw2" placeholder="Confirm password" name="repeatPassword"
                         class="login-email-input" type="password">
                     <button [disabled]="!pwForm.valid || pw1 !== pw2" (click)="register()" class="login-button"
-                        type="submit">Registrieren</button>
-                    <button class="login-button" type="button" (click)="onPrevious()">Zurück</button>
+                        type="submit">Register</button>
+                    <button class="login-button" type="button" (click)="onPrevious()">Back</button>
                 </form>
             </div>
         </div>
         <div class="register-succes-bg" *ngIf="counter === 4">
             <div class="success-registered-info-container">
-                <h1>Herzlich Willkommen</h1>
-                <p class="info1"> Wir haben Ihnen eine Bestätigungs-E-Mail gesendet. <br> Bitte überprüfen Sie Ihr
-                    Postfach und folgen Sie dem darin enthaltenen Link, um Ihr Profil zu aktivieren.</p>
-                <p class="info2"> Falls Sie die E-Mail nicht in Ihrem Posteingang finden, sehen Sie bitte auch in Ihrem
-                    Spam- oder Junk-Mail-Ordner nach.</p>
-                <button (click)="routeToLogIn()" class="final-login-button">Einloggen</button>
+                <h1>Welcome</h1>
+                <p class="info1"> We have sent you a confirmation email. 
+                    <br> Please check your inbox and follow the link inside to activate your profile.</p>
+                <p class="info2"> If you do not find the email in your inbox, please also check your Spam or Junk Mail folder.</p>
+                <button (click)="routeToLogIn()" class="final-login-button">Log In</button>
             </div>
         </div>
     </div>
