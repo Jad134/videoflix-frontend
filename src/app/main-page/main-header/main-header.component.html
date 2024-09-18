@@ -1,13 +1,13 @@
 <section>
     <div class="main">
         <div class="headline">
-            <h1>VideoFlix</h1>
+            <img src="../../../assets/img/symbol.png" alt="">
         </div>
         <div class="buttons-container">
             <div class="link-container">
-                <span [ngStyle]="{'color': showFavorites ? 'red' : 'white',}" (click)="routeToFavorites()"
+                <span [ngStyle]="{'color': showFavorites ? 'rgba(46, 62, 223, 1)' : 'white',}" (click)="routeToFavorites()"
                     class="favorites">Favorites</span>
-                <span [ngStyle]="{'color': showFavorites ? 'white' : 'red',}" (click)="routeToHome()"
+                <span [ngStyle]="{'color': showFavorites ? 'white' : 'rgba(46, 62, 223, 1)',}" (click)="routeToHome()"
                     class="favorites">Home</span>
             </div>
             <div (click)="toggleUserActions()" class="user-button">

@@ -77,13 +77,13 @@ section {
         height: 2px;
         bottom: 0;
         left: 0;
-        background: $main-red;
+        background: $main-blue;
         transform-origin: bottom right;
         transition: transform 0.25s ease-out;
     }
 
     &:hover {
-        color: lighten($main-red, 10%);
+        color: lighten($main-blue, 10%);
     }
 
 

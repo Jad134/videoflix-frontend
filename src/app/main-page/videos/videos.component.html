@@ -1,16 +1,30 @@
+<div class="preview-video-container">
+    <div class="preview-infobox">
+        <h1>Watchtower</h1>
+        <span>A watchtower surrounded by barbed wire</span>
+        <button> <mat-icon>play_arrow</mat-icon>  Play</button>
+    </div> 
+        <video autoplay loop  muted class="preview-video">
+            <source src="../../../assets/videos/watchtower.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+</div> 
 <section>
+   
     <div class="content">
+        
         <ng-container *ngFor="let category of getCategories()">
             <h2 class="category-headline">{{ category }}</h2>
             <div class="video-row">
                 <ng-container *ngFor="let video of groupedVideos[category]">
-                    <div  (mouseenter)=" onVideoMouseHover(video, hoveredVideo, $event)"
+                    <div (mouseenter)=" onVideoMouseHover(video, hoveredVideo, $event)"
                         (mouseleave)="onVideoMouseLeave(video, hoveredVideo)" class="video-box">
                         <video (click)="expandVideo(videoElement, video.video_file, video)" #videoElement class="video">
                             <source [src]="video.video_file" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
-                        <div [ngClass]="{'scale-up': video.showInfo, 'scale-out': !video.showInfo, 'transform-left-center': mouseIsNearEdge}" class="info-box">
+                        <div [ngClass]="{'scale-up': video.showInfo, 'scale-out': !video.showInfo, 'transform-left-center': mouseIsNearEdge}"
+                            class="info-box">
                             <video #hoveredVideo (click)="expandVideo(videoElement, video.video_file, video)"
                                 class="hover-video">
                                 <source [src]="video.video_file" type="video/mp4">
@@ -28,7 +42,7 @@
                             </div>
                             <div class="title-and-description-hover">
                                 <h2>{{video.title}}</h2>
-                               
+
                             </div>
                         </div>
                     </div>
