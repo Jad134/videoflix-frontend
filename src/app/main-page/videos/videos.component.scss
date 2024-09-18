@@ -81,8 +81,9 @@ section {
         justify-content: center;
         gap: 4px;
         cursor: pointer;
+        transition: background-color 0.3s ease;
         &:hover{
-            color: $button-hover;
+            background-color: $button-hover;
         }
     }
 }

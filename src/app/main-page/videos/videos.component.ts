@@ -34,6 +34,7 @@ export class VideosComponent {
     this.videoService.getVideos().subscribe(data => {
       this.videos = data;
       this.groupVideosByCategory();
+      
     });
 
     this.videoService.getFavoriteVideoIds().subscribe(favoriteIds => {
@@ -324,4 +325,21 @@ export class VideosComponent {
       }, 300); // Dauer der Animation in Millisekunden
     });
   }
+
+
+  /**
+   * Open the preview Video in expanded version
+   */
+  openPreviewVideo(){
+    const previewVideo = this.videos.find(video => video.id === 27);
+
+    if (previewVideo) {
+        this.expandedVideoElement = previewVideo; 
+        this.expandedVideoSrc = previewVideo.video_file;  
+        this.currentVideo = previewVideo;  
+    } else {
+        console.error('Video mit gesuchter ID nicht gefunden.');
+    }
+  }
+
 }
