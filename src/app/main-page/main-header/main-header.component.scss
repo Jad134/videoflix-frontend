@@ -95,19 +95,23 @@ section {
 }
 
 .user-button {
-    border-radius: 100%;
-    height: 45px;
-    width: 45px;
-    border: 2px solid $main-red;
-    background-color: #202020;
+    background-color: rgba(46, 62, 223, 1);
+    padding: 12px 24px;
+    border-radius: 24px;
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
     transition: background-color 0.3s ease, filter 0.3s ease;
+    gap: 8px;
 
     &:hover {
-        filter: brightness(1.2);
+        background-color: $button-hover;
+    }
+
+    >span {
+        color: white;
+        font-size: 18px;
     }
 }
 
@@ -226,11 +230,11 @@ section {
         display: none;
     }
 
-    .user-button{
+    .user-button {
         display: none;
     }
-    
-    .main{
+
+    .main {
         justify-content: center;
     }
 }
