@@ -158,6 +158,17 @@ export class VideosComponent {
   }
 
 
+   /**
+   * Closes the expanded video view if click th back button.
+   * @param event - The mouse event triggered when clicking outside the video.
+   */
+   closeVideoWithButton() {  
+      this.expandedVideoElement = null;
+      this.expandedVideoSrc = null;
+      this.isPlaying = false;
+  }
+
+
   /**
    * Toggles the play or pause state of the video.
    * @param event - The event triggered by clicking the play/pause button.
