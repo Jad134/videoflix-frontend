@@ -4,13 +4,8 @@
             <img src="../../../assets/img/symbol.png" alt="">
         </div>
         <div class="buttons-container">
-            <div class="link-container">
-                <span [ngStyle]="{'color': showFavorites ? 'rgba(46, 62, 223, 1)' : 'white',}" (click)="routeToFavorites()"
-                    class="favorites">Favorites</span>
-                <span [ngStyle]="{'color': showFavorites ? 'white' : 'rgba(46, 62, 223, 1)',}" (click)="routeToHome()"
-                    class="favorites">Home</span>
-            </div>
-            <div (click)="toggleUserActions()" class="user-button">
+            
+            <div (click)="logout()" class="user-button">
                 <img src="/assets/img/logout.png" alt="">
                 <span>Log Out</span>
             </div>

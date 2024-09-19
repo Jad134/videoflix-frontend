@@ -243,10 +243,10 @@ section {
 .play-icon {
     font-size: 100px;
     position: absolute;
-    color: rgb(229, 9, 20);
+    color: $main-blue;
     width: 100px;
     height: 100px;
-    border: 3px solid rgb(229, 9, 20);
+    border: 3px solid $main-blue;
     background: rgba(0, 0, 0, 0.7);
     border-radius: 24px;
     transition: opacity 0.8s ease-out;
@@ -321,7 +321,7 @@ section {
     border-radius: 24px;
     width: 100px;
     text-align: center;
-    background-color: darkred;
+    background-color: $main-blue;
     color: white;
     font-size: 18px;
     font-weight: bold;

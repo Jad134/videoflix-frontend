@@ -3,8 +3,6 @@
     <div class="max-width">
       <app-main-header style="z-index: 3; position: absolute; width: 100%;" (showFavoritesChanged)="onShowFavoritesChanged($event)"></app-main-header>
       <app-videos *ngIf="!showFavorites"></app-videos>
-      <app-favorites *ngIf="showFavorites"></app-favorites>
-      <app-responsive-footer (showFavoritesChanged)="onShowFavoritesChanged($event)"></app-responsive-footer>
     </div>
     
   </div>

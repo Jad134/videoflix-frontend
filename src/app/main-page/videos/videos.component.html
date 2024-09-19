@@ -17,8 +17,7 @@
             <h2 class="category-headline">{{ category }}</h2>
             <div class="video-row">
                 <ng-container *ngFor="let video of groupedVideos[category]">
-                    <div (mouseenter)=" onVideoMouseHover(video, hoveredVideo, $event)"
-                        (mouseleave)="onVideoMouseLeave(video, hoveredVideo)" class="video-box">
+                    <div  class="video-box">
                         <video (click)="expandVideo(videoElement, video.video_file, video)" #videoElement class="video">
                             <source [src]="video.video_file" type="video/mp4">
                             Your browser does not support the video tag.
@@ -88,11 +87,7 @@
                     <p>{{currentVideo.description}}</p>
                 </div>
 
-                <div class="favorite-container">
-                    <mat-icon (click)="addFav()"
-                        [ngClass]="isFavorite(currentVideo.id) ? 'favorite-active' : 'favorite-inactive'"
-                        class="favorite-icon">favorite</mat-icon>
-                </div>
+               
             </div>
         </div>
 
