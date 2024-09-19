@@ -43,6 +43,14 @@
     }
 }
 
+@media(max-width: 600px) {
+    .video-info-container {
+        width: 100%;
+        height: 100%;
+    }
+
+}
+
 @media(max-width: 530px) {
     .video-info-container {
         width: 400px;

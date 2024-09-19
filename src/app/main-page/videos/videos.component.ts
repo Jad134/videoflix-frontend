@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild, inject } from '@angular/core';
+import { Component, ElementRef, HostListener, OnInit, ViewChild, inject, } from '@angular/core';
 import { VideoService } from '../../services/video.service';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon'
@@ -137,6 +137,10 @@ export class VideosComponent {
     this.expandedVideoElement = videoElement;
     this.expandedVideoSrc = videoSrc;
     this.currentVideo = videoData
+    setTimeout(() => {
+      this.updateControls();
+    }, 100);
+
   }
 
 
@@ -340,6 +344,29 @@ export class VideosComponent {
     } else {
         console.error('Video mit gesuchter ID nicht gefunden.');
     }
+  }
+
+
+  /**
+   * Remove or add the controls for the expanded video for the mobile version
+   */
+  updateControls() {
+    if( this.sizeVideo){
+      const videoElement = this.sizeVideo.nativeElement;
+      if (window.innerWidth < 600) {
+        videoElement.removeAttribute('controls');
+      } else {
+        videoElement.setAttribute('controls', 'true');
+      }
+    }
+    
+   
+  }
+
+  // Event-Listener for the Windows resize, to remove the controls for the expanded video
+  @HostListener('window:resize', ['$event'])
+  onResize(event?: Event) {
+    this.updateControls();
   }
 
 }
