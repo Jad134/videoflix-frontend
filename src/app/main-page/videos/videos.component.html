@@ -65,6 +65,7 @@
                 (click)="togglePlay($event)" class="play-icon">pause</mat-icon>
 
             <div class="video-info">
+                <div class="shadow-seperator"></div>
                 <div class="headline-and-setting">
                     <h1 class="video-title">{{currentVideo.title}}</h1>
                     <div class="quality-button-container">
@@ -86,6 +87,7 @@
                     <h2>Description:</h2>
                     <p>{{currentVideo.description}}</p>
                 </div>
+                <button (click)="playResponsiveVideo()" class="responsive-play-button"><mat-icon>play_arrow</mat-icon> Play</button>
                 <img (click)="closeVideoWithButton()" class="back-btn" src="/assets/img/arrow_back.png" alt="">
             </div>
         </div>

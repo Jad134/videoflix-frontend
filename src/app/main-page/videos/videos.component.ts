@@ -370,14 +370,21 @@ export class VideosComponent {
         videoElement.setAttribute('controls', 'true');
       }
     }
-    
-   
   }
+
 
   // Event-Listener for the Windows resize, to remove the controls for the expanded video
   @HostListener('window:resize', ['$event'])
   onResize(event?: Event) {
     this.updateControls();
+  }
+
+
+  playResponsiveVideo(){
+    const video = this.sizeVideo.nativeElement;
+    if (video){
+      video.requestFullscreen()
+    }
   }
 
 }
