@@ -380,11 +380,17 @@ export class VideosComponent {
   }
 
 
+  /**
+   * make video in preview to fullscreen video
+   */
   playResponsiveVideo(){
     const video = this.sizeVideo.nativeElement;
     if (video){
-      video.requestFullscreen()
+
+      video.classList.add('fullscreen-active')
+      video.requestFullscreen() 
+      
     }
   }
 
-}
+} 
