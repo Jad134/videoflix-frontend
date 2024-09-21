@@ -289,13 +289,14 @@ section {
 
 .video-info-container {
     width: 800px;
-    height: 700px;
+    height: auto;
     background: linear-gradient(to bottom, #000000, #111111, #000000, #000000, #1b1b1b);
     display: flex;
     align-items: baseline;
     /* justify-content: space-between; */
     position: relative;
     flex-direction: column;
+    min-height: 700px;
 }
 
 .video-info {

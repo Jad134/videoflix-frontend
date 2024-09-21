@@ -21,6 +21,7 @@
 @media(max-width: 730px) {
     .video-info-container {
         width: 600px;
+        min-height: unset;
     }
 
     .video-info {
@@ -43,7 +44,7 @@
 @media(max-width: 640px) {
     .video-info-container {
         width: 500px;
-        height: 600px;
+        //height: 600px;
     }
 
     .quality-button-container {
