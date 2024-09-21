@@ -12,4 +12,7 @@ import { LoginFooterComponent } from "../../login-page/login-footer/login-footer
 export class ImpressumComponent {
   hideLogInButton: boolean = true;
 
+  goBack(){
+    window.history.back()
+  }
 }

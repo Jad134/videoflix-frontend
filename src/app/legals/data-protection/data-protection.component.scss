@@ -21,3 +21,15 @@ section{
     position: absolute;
     bottom: 0;
 }
+
+.header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-inline: 32px;
+    padding-top: 24px;
+}
+
+.header-img{
+    cursor: pointer;
+}

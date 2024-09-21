@@ -2,6 +2,7 @@ import { Component, ElementRef, HostListener, OnInit, ViewChild, inject, } from 
 import { VideoService } from '../../services/video.service';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-videos',
@@ -11,6 +12,7 @@ import { MatIconModule } from '@angular/material/icon'
   styleUrls: ['./videos.component.scss', './responsive-videos.components.scss'],
 })
 export class VideosComponent {
+constructor(private router: Router){}
 
   expandedVideoElement: HTMLVideoElement | null = null;
   expandedVideoSrc: string | null = null;
@@ -391,6 +393,22 @@ export class VideosComponent {
       video.requestFullscreen() 
       
     }
+  }
+
+
+  /**
+   * Route to Data protection
+   */
+  routeToDataProtection(){
+    this.router.navigate(['data-protection'])
+  }
+
+
+  /**
+   * Route to Impressum
+   */
+  routeToImpressum(){
+    this.router.navigate(['impressum'])
   }
 
 } 

@@ -403,8 +403,22 @@ section {
     animation: pop 0.3s ease-in-out;
 }
 
-.margin-end {
-    margin-bottom: 120px;
+.footer{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.legal-links-container{
+    display: flex;
+    gap: 32px;
+
+    >a{
+        font-size: 18px;
+        text-decoration: none;
+        color: white;
+        cursor: pointer;
+    }
 }
 
 
