@@ -460,7 +460,7 @@ mat-icon {
 
     100% {
         transform: scale(1);
-    }
+    } 
 }
 
 
@@ -475,7 +475,7 @@ mat-icon {
 
 /* Der "Daumen", der verschoben wird */
 ::-webkit-scrollbar-thumb {
-    background-color: $main-red;
+    background-color: $main-blue;
     /* Farbe des Scroll-Thumbs */
     border-radius: 10px;
     /* Abgerundete Ecken für den Daumen */
