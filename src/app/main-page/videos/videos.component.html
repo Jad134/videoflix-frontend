@@ -5,7 +5,7 @@
         <button (click)="openPreviewVideo()"> <mat-icon>play_arrow</mat-icon> Play</button>
     </div>
     <video autoplay loop muted class="preview-video">
-        <source src="../../../assets/videos/watchtower.mp4" type="video/mp4">
+        <source src="./assets/videos/watchtower.mp4" type="video/mp4">
         Your browser does not support the video tag.
     </video>
 </div>
@@ -94,7 +94,7 @@
                     <p>{{currentVideo.description}}</p>
                 </div>
                 <button (click)="playResponsiveVideo()" class="responsive-play-button"><mat-icon>play_arrow</mat-icon> Play</button>
-                <img (click)="closeVideoWithButton()" class="back-btn" src="/assets/img/arrow_back.png" alt="">
+                <img (click)="closeVideoWithButton()" class="back-btn" src="./assets/img/arrow_back.png" alt="">
             </div>
         </div>
 
