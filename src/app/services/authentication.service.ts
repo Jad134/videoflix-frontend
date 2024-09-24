@@ -10,8 +10,7 @@ export class AuthenticationService {
 
   constructor(private http: HttpClient, private router: Router) { 
     if (typeof localStorage !== 'undefined') {
-      const loggedIn = localStorage.getItem('userLoggedIn');
-      this.userLoggedIn = loggedIn === 'true';
+
     } else {
 
     }
@@ -111,6 +110,8 @@ export class AuthenticationService {
    * Handle the successfully login and set token to local storage
    */
   handleSuccessLogin(response: any) {
+    console.log('test');
+    
     this.userLoggedIn = true;
     localStorage.setItem('access_token', response.access);
     localStorage.setItem('refresh_token', response.refresh);
@@ -189,9 +190,10 @@ handleResendActivationLinkErrors(error:any){
    */
   logout(): void {
     this.userLoggedIn = false;
-    localStorage.setItem('userLoggedIn', 'false');
+    localStorage.removeItem('access_token');
+    localStorage.removeItem('refresh_token');
     this.router.navigate(['/login']);
-    localStorage.removeItem('userData');
+
   }
 
 
