@@ -38,8 +38,6 @@ export class LoginDialogComponent {
                 this.loading = false;
             }
         });
-
-
     }
 
     togglePasswordVisibility() {

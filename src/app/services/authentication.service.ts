@@ -96,7 +96,7 @@ export class AuthenticationService {
         error: (error) => {
             if (error.status === 403 && error.error.detail === 'User account is not activated.') {
                 this.router.navigate(['/activate-info']);
-            } else if (error.status === 400 && error.error.detail === 'Invalid credentials.') {
+            } else if (error.status === 400 || error.status === 401 ) {
                 this.userNameOrPasswordWrong.next(true);
             } else {
                 console.error('Login failed:', error);
@@ -110,8 +110,6 @@ export class AuthenticationService {
    * Handle the successfully login and set token to local storage
    */
   handleSuccessLogin(response: any) {
-    console.log('test');
-    
     this.userLoggedIn = true;
     localStorage.setItem('access_token', response.access);
     localStorage.setItem('refresh_token', response.refresh);
