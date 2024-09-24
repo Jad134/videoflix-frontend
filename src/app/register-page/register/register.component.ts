@@ -151,7 +151,6 @@ export class RegisterComponent {
             username: this.sharedService.currentMail,
             phone: this.phoneNumber,
         };
-        console.log(user);
         return user
  
         

@@ -35,7 +35,6 @@ export class LoginDialogComponent {
         this.authServie.getLogInStatus().subscribe((status: boolean) => {
             if (status) {
                 this.mailOrPasswordWrong = true;
-                console.log(this.mailOrPasswordWrong);
                 this.loading = false;
             }
         });

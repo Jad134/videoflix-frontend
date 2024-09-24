@@ -34,12 +34,8 @@ constructor(private router: Router){}
 
   ngOnInit(): void {
     this.videoService.getVideos().subscribe(data => {
-      console.log('Received Videos:', data);
       this.videos = data;
-      this.groupVideosByCategory();
-      console.log(this.videos);
-      
-      
+      this.groupVideosByCategory(); 
     });
 
     this.videoService.getFavoriteVideoIds().subscribe(favoriteIds => {

@@ -13,7 +13,7 @@ export class VideoService {
   
   getVideos(): Observable<any> {
     const headers = new HttpHeaders({
-      'Authorization': `Bearer ${sessionStorage.getItem('access_token')}` // Token aus dem Session Storage
+      'Authorization': `Bearer ${localStorage.getItem('access_token')}` // Token aus dem Session Storage
     });
     return this.http.get('https://jad-el-nader.developerakademie.org/videos/?time=' + new Date().getTime(), { headers })
   }

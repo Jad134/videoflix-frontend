@@ -13,8 +13,7 @@ export class AuthenticationService {
       const loggedIn = localStorage.getItem('userLoggedIn');
       this.userLoggedIn = loggedIn === 'true';
     } else {
-      // Fallback-Logik, falls 'localStorage' nicht verfügbar ist
-      console.log('Storage exestiert nicht');
+
     }
   }
   resendActivationLinkStatus = new Subject<boolean>();
@@ -99,7 +98,6 @@ export class AuthenticationService {
             if (error.status === 403 && error.error.detail === 'User account is not activated.') {
                 this.router.navigate(['/activate-info']);
             } else if (error.status === 400 && error.error.detail === 'Invalid credentials.') {
-                console.log('name oder pw falsch');
                 this.userNameOrPasswordWrong.next(true);
             } else {
                 console.error('Login failed:', error);
@@ -110,14 +108,13 @@ export class AuthenticationService {
 
 
   /**
-   * Handle the successfully login and set items to local storage
+   * Handle the successfully login and set token to local storage
    */
   handleSuccessLogin(response: any) {
     this.userLoggedIn = true;
-    sessionStorage.setItem('access_token', response.access);
-    sessionStorage.setItem('refresh_token', response.refresh);
+    localStorage.setItem('access_token', response.access);
+    localStorage.setItem('refresh_token', response.refresh);
     this.router.navigate(['/browse']);
-    console.log('Login successful');
   }
 
 
@@ -128,7 +125,6 @@ export class AuthenticationService {
   resendActivationLink(username: string): void {
     this.http.post('https://jad-el-nader.developerakademie.org/resend-activation/', { username }).subscribe({
       next: (response: any) => {
-        console.log('Activation link resent successfully');
         this.resendActivationLinkStatus.next(true);
       },
       error: (error) => {
@@ -143,11 +139,9 @@ export class AuthenticationService {
    */
 handleResendActivationLinkErrors(error:any){
   if (error.status === 404 && error.error.detail === 'User not found.') {
-    console.log('User nicht gefunden! Hier message für unbekannten user einfügen');
     this.notFoundStatus.next(true);
   }
   else if (error.status === 400 && error.error.detail === 'User account is already activated.') {
-    console.log('User ist schon aktiviert. Hier message für bereits aktivierten user eingeben');
     this.alreadyActivatedStatus.next(true);
   }
   console.error('Failed to resend activation link:', error);

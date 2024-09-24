@@ -49,10 +49,8 @@ export class ActivateUserInfoComponent {
     this.authService.getResendActivationLinkStatus().subscribe((status: boolean) => {
       this.resendActivationLinkStatus = status;
       if (status) {
-        console.log('Link sent successfully');
         this.loading = false;
       } else {
-        console.log('Failed to send link');
         this.loading = false;
       }
     });
@@ -80,7 +78,6 @@ export class ActivateUserInfoComponent {
     this.authService.getAlreadyActivatedStatus().subscribe((status: boolean) => {
       this.userAlreadyActivated = status;
       if (status) {
-        console.log('User account is already activated test');
         this.loading = false;
         this.countdown = 10;  // Setze den Countdown auf 5 Sekunden
         this.countdownInterval = setInterval(() => {
