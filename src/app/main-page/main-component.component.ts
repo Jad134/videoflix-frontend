@@ -15,15 +15,20 @@ import { ResponsiveFooterComponent } from "./responsive-footer/responsive-footer
     imports: [MainHeaderComponent, VideosComponent, FavoritesComponent, CommonModule, ResponsiveFooterComponent]
 })
 export class MainComponentComponent {
-    authServiece = inject(AuthenticationService);
+    authService = inject(AuthenticationService);
     showFavorites = false;
 
-    constructor(private router: Router) {
-        if (!this.authServiece.userLoggedIn) {
-            this.router.navigate(['/login']);
-        }
-    }
+    constructor(private router: Router) {}
 
+    ngOnInit(): void {
+        this.checkLoginStatus();
+      }
+
+      checkLoginStatus(): void {
+        if (!this.authService.userLoggedIn) {
+          this.router.navigate(['/login']);
+        }
+      }
 
     /**
      * 

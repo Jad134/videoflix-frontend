@@ -91,37 +91,33 @@ export class AuthenticationService {
    * login function-
    */
   login(username: string, password: string): void {
-    this.http.post('https://jad-el-nader.developerakademie.org/login/', { username, password }).subscribe({
-      next: (response: any) => {
-       this.handleSuccessLogin(response)
-      },
-      error: (error) => {
-        if (error.status === 403 && error.error.detail === 'User account is not activated.') {
-          this.router.navigate(['/activate-info']);
+    this.http.post('https://jad-el-nader.developerakademie.org/api/token/', { username, password }).subscribe({
+        next: (response: any) => {
+            this.handleSuccessLogin(response);
+        },
+        error: (error) => {
+            if (error.status === 403 && error.error.detail === 'User account is not activated.') {
+                this.router.navigate(['/activate-info']);
+            } else if (error.status === 400 && error.error.detail === 'Invalid credentials.') {
+                console.log('name oder pw falsch');
+                this.userNameOrPasswordWrong.next(true);
+            } else {
+                console.error('Login failed:', error);
+            }
         }
-        else if (error.status === 400 && error.error.detail === 'Invalid credentials.'){
-           console.log('name oder pw falsch')
-           this.userNameOrPasswordWrong.next(true)
-        }
-        else {
-          console.error('Login failed:', error);
-        }
-      }
     });
-  }
+}
 
 
   /**
    * Handle the successfully login and set items to local storage
    */
-  handleSuccessLogin(response:any){
+  handleSuccessLogin(response: any) {
     this.userLoggedIn = true;
-    localStorage.setItem('userLoggedIn', 'true');
+    sessionStorage.setItem('access_token', response.access);
+    sessionStorage.setItem('refresh_token', response.refresh);
     this.router.navigate(['/browse']);
     console.log('Login successful');
-    localStorage.setItem('userData', JSON.stringify(response.user));
-
-    console.log('User Data:', response.user);
   }
 
 

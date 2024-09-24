@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 
 @Injectable({
@@ -8,13 +8,17 @@ import { Observable, of } from 'rxjs';
 export class VideoService {
 
   constructor(private http: HttpClient) { }
-  private apiUrl = 'https://jad-el-nader.developerakademie.org/videos/';
   userId: any;
   favoriteVideos: any[] = [];
   
   getVideos(): Observable<any> {
-    return this.http.get(this.apiUrl);
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${sessionStorage.getItem('access_token')}` // Token aus dem Session Storage
+    });
+    return this.http.get('https://jad-el-nader.developerakademie.org/videos/?time=' + new Date().getTime(), { headers })
   }
+
+ 
 
 
   /**
