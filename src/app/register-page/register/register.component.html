@@ -5,7 +5,7 @@
             <div class="action-div">
                 <h2>Email-Adress</h2>
                 <form #mailForm="ngForm" class="login-form">
-                    <input pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"  #emailInput="ngModel" required [(ngModel)]="sharedService.currentMail" placeholder="E-Mail-Adress" name="email"
+                    <input (keydown.enter)="checkMail(emailInput)" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"  #emailInput="ngModel" required [(ngModel)]="sharedService.currentMail" placeholder="E-Mail-Adress" name="email"
                         class="login-email-input" type="email">
                     <button  [class.disabled]="!mailForm.valid" class="login-button" (click)="checkMail(emailInput)">Continue</button>
                     <p #mailInfo class="taken-mail-info">*This mail is already taken</p>
