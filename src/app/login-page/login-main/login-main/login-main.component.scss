@@ -192,3 +192,26 @@
     }
 }
 
+/*Height responsive*/
+
+
+@media(max-height:500px) {
+    .login-main-section {
+        margin-top: 20px;
+    }
+
+    .headline{
+        font-size: 22px;
+    }
+
+    .first-text{
+        font-size: 19px;
+        margin-block-end: 8px;
+    }
+}
+
+@media (min-height: 600px) and (max-height: 700px) {
+    .login-main-section {
+        margin-top: 80px;
+    }
+}

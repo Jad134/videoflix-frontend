@@ -9,7 +9,7 @@
         width: 400px;
     }
 
-    .login-email-input{
+    .login-email-input {
         width: 300px;
     }
 }
@@ -19,11 +19,61 @@
         width: 300px;
     }
 
-    .login-email-input{
+    .login-email-input {
         width: 200px;
     }
 
-    .address-headline{
+    .address-headline {
         font-size: 26px !important;
     }
+}
+
+/*Max Height*/
+
+@media(max-height:500px) {
+    .register-container-bg {
+        height: 270px;
+    }
+
+    .login-form {
+        gap: 10px;
+        margin-top: 0;
+    }
+
+    .action-div {
+        >h2 {
+            margin-block-end: 0;
+            margin-block-start: 4px;
+        }
+    }
+
+    .taken-mail-info {
+        margin-block-start: 0;
+    }
+}
+
+@media(min-height: 600px) and (max-height:880px) {
+    .action-div {
+        >h2 {
+            margin-block-end: 0;
+        }
+    }
+
+    .login-form {
+        margin-top: 0;
+    }
+
+    .taken-mail-info {
+        margin-block-start: 0;
+    }
+
+    .register-container-bg {
+        height: auto;
+    }
+
+    .login-button{
+        margin-bottom: 2px;
+    }
+
+
 }
