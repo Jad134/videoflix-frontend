@@ -9,7 +9,11 @@
         <p class="second-responsive-text">Enter your email  <br>to create or restart your subscription</p>
     </div>
     <div class="register-container">
-        <input [(ngModel)]="email" placeholder="E-Mail-Adresse" class="register-email-input" type="text">
+        <input (keydown.enter)="checkIfMailExist()" [(ngModel)]="email" placeholder="E-Mail-Adresse" class="register-email-input" type="text">
         <button (click)="checkIfMailExist()" class="letsgo-btn">Sign Up  <mat-icon class="arrow-ios">arrow_forward_ios</mat-icon></button>
     </div> 
+
+    <div  *ngIf="loading" class="spinner-container">
+        <div class="spinner"></div>
+    </div>
 </section>
