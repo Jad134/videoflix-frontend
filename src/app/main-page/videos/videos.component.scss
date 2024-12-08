@@ -1,5 +1,14 @@
 @import '../../../styles.scss';
 
+.tets{
+    width: 250px;
+    height: 180px;
+    object-fit: cover;
+
+    position: absolute;
+}
+
+
 section {
     // overflow-x: hidden;
     // display: flex;
