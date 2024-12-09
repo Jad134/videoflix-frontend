@@ -17,8 +17,9 @@
             <h2 class="category-headline">{{ category }}</h2>
             <div class="video-row">
                 <ng-container *ngFor="let video of groupedVideos[category]">
+
                     <div class="video-box">
-                        <img class="tets" src="./assets/img/thumbnail-{{video.id}}.png" alt=""> 
+                        <img (click)="expandVideo(videoElement, video.video_file, video)" class="thumbnail-image" src="./assets/img/thumbnail-{{video.id}}.png" alt=""> 
                         <video (click)="expandVideo(videoElement, video.video_file, video)" #videoElement class="video">
                             <source [src]="video.video_file" type="video/mp4">
                             Your browser does not support the video tag.

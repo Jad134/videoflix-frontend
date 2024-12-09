@@ -174,8 +174,16 @@
     }
 
     .video {
-        width: 170px;
-        height: 96px;
+        // width: 170px;
+        // height: 96px;
+        height: 0px;
+        width: 0px;
+    }
+
+    .thumbnail-image{
+        object-fit: cover;
+        position: unset
+
     }
 
 }

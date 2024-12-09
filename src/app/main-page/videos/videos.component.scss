@@ -1,12 +1,5 @@
 @import '../../../styles.scss';
 
-.tets{
-    width: 250px;
-    height: 180px;
-    object-fit: cover;
-
-    position: absolute;
-}
 
 
 section {
@@ -123,6 +116,15 @@ section {
     position: relative;
 }
 
+.thumbnail-image{
+    width: 250px;
+    object-fit: cover;
+    position: absolute;
+    top: 20px;
+    height: 142px;
+}
+
+
 .info-box {
     background-color: rgb(29, 29, 29);
     height: 130%;
@@ -225,8 +227,8 @@ section {
 }
 
 .video {
-    width: 250px;
-    height: 180px;
+    width: 0px;
+    height: 0px;
 }
 
 
