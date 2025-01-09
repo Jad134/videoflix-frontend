@@ -24,7 +24,6 @@ export class VideoService {
     return this.http.get('https://jad-el-nader.developerakademie.org/videos/?time=' + new Date().getTime(), { headers })
     .pipe(
       catchError(error => {
-        // Fehler angemessen behandeln
         console.error('Fehler beim Abrufen der Videos:', error);
         if (error.status === 401 || error.status === 403) {
           this.router.navigate(['/login']); 
