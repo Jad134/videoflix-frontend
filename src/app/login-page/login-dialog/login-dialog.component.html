@@ -8,18 +8,20 @@
                 <form class="login-form" action="">
                     <input [(ngModel)]="sharedService.currentMail" name="email" placeholder="E-Mail-Adress"
                         class="login-email-input" type="email">
-                        <div class="pw-input-container">
-                            <input [(ngModel)]="password" name="password" placeholder="Password" class="login-password-input"
-                            [type]="isPasswordVisible ? 'text' : 'password'">
-                            <img (click)="togglePasswordVisibility()" class="visibility-icon" src="./assets/img/visibility.png" alt="">
-                        </div>
-                   
+                    <div class="pw-input-container">
+                        <input [(ngModel)]="password" name="password" placeholder="Password"
+                            class="login-password-input" [type]="isPasswordVisible ? 'text' : 'password'">
+                        <img (click)="togglePasswordVisibility()" class="visibility-icon"
+                            src="./assets/img/visibility.png" alt="">
+                    </div>
+
+                    <button (click)="guestLogIn()" class="login-button-guest">Guest LogIn</button>
                     <button (click)="logIn()" class="login-button">Log In</button>
                 </form>
                 <div class="link-container">
                     <a [routerLink]="['/reset-password']">Forgot password?</a>
                     <p class="new-text">New to Videoflix?<a [routerLink]="['/register']">Sign Up now</a></p>
-                    
+
                     <span [ngStyle]="{
                         'opacity': mailOrPasswordWrong ? '1' : '0',
                       }" class="invalid-login">*Email or password incorrect</span>

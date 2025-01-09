@@ -19,11 +19,11 @@ export class LoginDialogComponent {
     authServie = inject(AuthenticationService);
     password: any;
     mailOrPasswordWrong: boolean = false;
-    loading :boolean = false;
+    loading: boolean = false;
     hideLogInButton = true;
     isPasswordVisible: boolean = false;
 
-    constructor(private router: Router) {}
+    constructor(private router: Router) { }
 
 
     /**
@@ -40,7 +40,20 @@ export class LoginDialogComponent {
         });
     }
 
+
+    guestLogIn(){
+        this.loading = true;
+        this.authServie.login('doe@fakemail.de', 'guest2205')
+        this.authServie.getLogInStatus().subscribe((status: boolean) => {
+            if (status) {
+                this.mailOrPasswordWrong = true;
+                this.loading = false;
+            }
+        });
+    }
+
+
     togglePasswordVisibility() {
         this.isPasswordVisible = !this.isPasswordVisible;
-      }
+    }
 }
