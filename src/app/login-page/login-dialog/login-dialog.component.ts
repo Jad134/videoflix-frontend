@@ -43,7 +43,7 @@ export class LoginDialogComponent {
 
     guestLogIn(){
         this.loading = true;
-        this.authServie.login('doe@fakemail.de', 'guest2205')
+        this.authServie.login('ridoxo8083@sfxeur.com', 'guest2205')
         this.authServie.getLogInStatus().subscribe((status: boolean) => {
             if (status) {
                 this.mailOrPasswordWrong = true;
