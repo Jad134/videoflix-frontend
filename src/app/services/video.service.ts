@@ -29,7 +29,7 @@ export class VideoService {
           this.router.navigate(['/login']); 
         }
         // Rückgabe eines neuen Observables mit einem Fehler
-        return throwError(() => new Error('Fehler beim Abrufen der Videos.')); // Aktualisierte Nutzung
+        return throwError(() => new Error('Fehler beim Abrufen der Videos.')); 
       })
     );
 }
@@ -50,7 +50,7 @@ export class VideoService {
       const userId = userData.user_id;
       return this.http.post(`https://jad-el-nader.developerakademie.org/favorites/toggle/${videoId}/`, { user_id: userId });
     }
-    return of(null); // Gibt ein leeres Observable zurück, falls kein userData vorhanden ist
+    return of(null); 
   }
 
 
@@ -63,11 +63,11 @@ export class VideoService {
       const userDatas = localStorage.getItem('userData');
       if (userDatas) {
         const userData = JSON.parse(userDatas);
-        const userId = userData.user_id; // Zugriff auf die user_id Eigenschaft
+        const userId = userData.user_id; 
         return this.http.get<number[]>(`https://jad-el-nader.developerakademie.org/favorites/user/${userId}/`);
       }
     }
-    // Wenn localStorage nicht verfügbar oder kein userData vorhanden, geben wir ein leeres Array zurück
+
     return of([]);
   }
 }
