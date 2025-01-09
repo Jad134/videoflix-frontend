@@ -36,8 +36,6 @@ constructor(private router: Router){}
     this.videoService.getVideos().subscribe(data => {
       this.videos = data;
       this.groupVideosByCategory(); 
-      console.log(this.videos);
-      
     });
 
     this.videoService.getFavoriteVideoIds().subscribe(favoriteIds => {
