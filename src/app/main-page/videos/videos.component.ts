@@ -348,7 +348,7 @@ constructor(private router: Router){}
    * Open the preview Video in expanded version
    */
   openPreviewVideo(){
-    const previewVideo = this.videos.find(video => video.id === 27);
+    const previewVideo = this.videos.find(video => video.id === 14);
 
     if (previewVideo) {
         this.expandedVideoElement = previewVideo; 
