@@ -21,7 +21,7 @@ export class VideoService {
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${localStorage.getItem('access_token')}` // Token aus dem Session Storage
     });
-    return this.http.get('https://jad-el-nader.developerakademie.org/videos/?time=' + new Date().getTime(), { headers })
+    return this.http.get('https://videoflix.jad-portfolio-api.de/videos/?time=' + new Date().getTime(), { headers })
     .pipe(
       catchError(error => {
         console.error('Fehler beim Abrufen der Videos:', error);
@@ -48,7 +48,7 @@ export class VideoService {
     if (userDatas) {
       const userData = JSON.parse(userDatas);
       const userId = userData.user_id;
-      return this.http.post(`https://jad-el-nader.developerakademie.org/favorites/toggle/${videoId}/`, { user_id: userId });
+      return this.http.post(`https://videoflix.jad-portfolio-api.de/favorites/toggle/${videoId}/`, { user_id: userId });
     }
     return of(null); 
   }
@@ -64,7 +64,7 @@ export class VideoService {
       if (userDatas) {
         const userData = JSON.parse(userDatas);
         const userId = userData.user_id; 
-        return this.http.get<number[]>(`https://jad-el-nader.developerakademie.org/favorites/user/${userId}/`);
+        return this.http.get<number[]>(`https://videoflix.jad-portfolio-api.de/favorites/user/${userId}/`);
       }
     }
 

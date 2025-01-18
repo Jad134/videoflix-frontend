@@ -28,7 +28,7 @@ export class AuthenticationService {
    * @returns true or false if username/mail exist
    */
   async checkUsername(username: any) {
-    return await fetch(`https://jad-el-nader.developerakademie.org/check-username/${username}/`)
+    return await fetch(`https://videoflix.jad-portfolio-api.de/check-username/${username}/`)
       .then(response => response.json())
       .then(data => {
         if (data.exists) {
@@ -70,7 +70,7 @@ export class AuthenticationService {
    */
   async tryRegisterUser(requestOptions: RequestInit){
     try {
-      const response = await fetch("https://jad-el-nader.developerakademie.org/register/", requestOptions);
+      const response = await fetch("https://videoflix.jad-portfolio-api.de/register/", requestOptions); //https://jad-el-nader.developerakademie.org
       if (response.ok) {
         return true; // Registrierung erfolgreich
       } else {
@@ -89,7 +89,7 @@ export class AuthenticationService {
    * login function-
    */
   login(username: string, password: string): void {
-    this.http.post('https://jad-el-nader.developerakademie.org/api/token/', { username, password }).subscribe({
+    this.http.post('https://videoflix.jad-portfolio-api.de/api/token/', { username, password }).subscribe({
         next: (response: any) => {
             this.handleSuccessLogin(response);
         },
@@ -122,7 +122,7 @@ export class AuthenticationService {
    * @param username 
    */
   resendActivationLink(username: string): void {
-    this.http.post('https://jad-el-nader.developerakademie.org/resend-activation/', { username }).subscribe({
+    this.http.post('https://videoflix.jad-portfolio-api.de/resend-activation/', { username }).subscribe({
       next: (response: any) => {
         this.resendActivationLinkStatus.next(true);
       },
@@ -196,7 +196,7 @@ handleResendActivationLinkErrors(error:any){
 
 
   requestPasswordReset(mail: any) {
-    this.http.post('https://jad-el-nader.developerakademie.org/password-reset/', { email: mail })
+    this.http.post('https://videoflix.jad-portfolio-api.de/password-reset/', { email: mail })
       .subscribe({
         next: (response) => {
 
