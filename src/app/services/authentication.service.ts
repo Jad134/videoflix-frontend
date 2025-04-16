@@ -39,7 +39,7 @@ export class AuthenticationService {
       })
       .catch(error => {
         console.error('Error:', error);
-        return false; // Optional: Behandle den Fehler und gib false zurück
+        return false; 
       });
   }
 
@@ -72,15 +72,15 @@ export class AuthenticationService {
     try {
       const response = await fetch("https://videoflix.jad-portfolio-api.de/register/", requestOptions); //https://jad-el-nader.developerakademie.org
       if (response.ok) {
-        return true; // Registrierung erfolgreich
+        return true; 
       } else {
         const errorText = await response.text();
         console.error(errorText);
-        return false; // Registrierung fehlgeschlagen
+        return false; 
       }
     } catch (error) {
       console.error(error);
-      return false; // Fehler beim Netzwerk
+      return false; 
     }
   }
 
