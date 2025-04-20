@@ -1,7 +1,8 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, Observable, of, throwError } from 'rxjs';
 import { Router } from '@angular/router';
+import { ApiUrlsService } from './api-urls.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +12,8 @@ export class VideoService {
   constructor(private http: HttpClient, private router: Router) { }
   userId: any;
   favoriteVideos: any[] = [];
+  urlService = inject(ApiUrlsService)
+  
 
 
   /**
@@ -21,7 +24,7 @@ export class VideoService {
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${localStorage.getItem('access_token')}` // Token aus dem Session Storage
     });
-    return this.http.get('https://videoflix.jad-portfolio-api.de/videos/?time=' + new Date().getTime(), { headers })
+    return this.http.get(`${this.urlService.GET_VIDEO_URL}`, { headers })
     .pipe(
       catchError(error => {
         console.error('Fehler beim Abrufen der Videos:', error);

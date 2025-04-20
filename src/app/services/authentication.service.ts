@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, Subject } from 'rxjs';
+import { ApiUrlsService } from './api-urls.service';
 
 @Injectable({
   providedIn: 'root'
@@ -20,6 +21,7 @@ export class AuthenticationService {
   private alreadyActivatedStatus = new Subject<boolean>();
   userNameOrPasswordWrong = new Subject<boolean>();
   userLoggedIn : boolean = true;
+  urlService = inject(ApiUrlsService)
 
   
   /**
@@ -28,7 +30,7 @@ export class AuthenticationService {
    * @returns true or false if username/mail exist
    */
   async checkUsername(username: any) {
-    return await fetch(`https://videoflix.jad-portfolio-api.de/check-username/${username}/`)
+    return await fetch(this.urlService.CHECK_USERNAME_URL +`${username}/`)
       .then(response => response.json())
       .then(data => {
         if (data.exists) {
@@ -70,7 +72,7 @@ export class AuthenticationService {
    */
   async tryRegisterUser(requestOptions: RequestInit){
     try {
-      const response = await fetch("https://videoflix.jad-portfolio-api.de/register/", requestOptions); //https://jad-el-nader.developerakademie.org
+      const response = await fetch(this.urlService.REGISTER_USER_URL, requestOptions); //https://jad-el-nader.developerakademie.org
       if (response.ok) {
         return true; 
       } else {
@@ -89,7 +91,7 @@ export class AuthenticationService {
    * login function-
    */
   login(username: string, password: string): void {
-    this.http.post('https://videoflix.jad-portfolio-api.de/api/token/', { username, password }).subscribe({
+    this.http.post(this.urlService.LOGIN_URL, { username, password }).subscribe({
         next: (response: any) => {
             this.handleSuccessLogin(response);
         },
@@ -122,7 +124,7 @@ export class AuthenticationService {
    * @param username 
    */
   resendActivationLink(username: string): void {
-    this.http.post('https://videoflix.jad-portfolio-api.de/resend-activation/', { username }).subscribe({
+    this.http.post(this.urlService.RESEND_EMAIL_ACTIVATION_LINK, { username }).subscribe({
       next: (response: any) => {
         this.resendActivationLinkStatus.next(true);
       },
@@ -196,7 +198,7 @@ handleResendActivationLinkErrors(error:any){
 
 
   requestPasswordReset(mail: any) {
-    this.http.post('https://videoflix.jad-portfolio-api.de/password-reset/', { email: mail })
+    this.http.post(this.urlService.RESET_PASSWORD_URL, { email: mail })
       .subscribe({
         next: (response) => {
 
