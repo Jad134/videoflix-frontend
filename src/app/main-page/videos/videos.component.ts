@@ -38,11 +38,6 @@ constructor(private router: Router){}
       this.groupVideosByCategory(); 
     });
 
-
-    // const userData = localStorage.getItem('userData');
-    // if (userData) {
-    //   console.log('Logged in user data:', JSON.parse(userData));
-    // }
   }
 
   /**
@@ -107,7 +102,6 @@ constructor(private router: Router){}
         groups[category] = [];
       }
       groups[category].push(video);
-      //console.log(groups);
       return groups;
     }, {});
   }
@@ -144,7 +138,6 @@ constructor(private router: Router){}
    * @param event - The mouse event triggered when clicking outside the video.
    */
   closeVideo(event: MouseEvent) {
-    // Check if the click is outside the video element
     if (event.target === event.currentTarget) {
       this.expandedVideoElement = null;
       this.expandedVideoSrc = null;
@@ -169,8 +162,8 @@ constructor(private router: Router){}
    * @param event - The event triggered by clicking the play/pause button.
    */
   togglePlay(event: Event) {
-    event.preventDefault(); // Verhindert den Standard-Klickeffekt
-    event.stopPropagation(); // Stoppt die Ausbreitung des Click-Events
+    event.preventDefault(); 
+    event.stopPropagation(); 
 
     const video = this.sizeVideo.nativeElement;
     if (video.paused) {

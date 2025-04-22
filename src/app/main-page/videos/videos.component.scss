@@ -13,15 +13,11 @@ section {
 
     overflow-x: auto;
     display: flex;
-    /* flex-direction: column; */
-    /* width: 100vw; */
     font-family: "Nunito";
-    /* width: 100vw;*/
 }
 
 .preview-video-container {
     width: 100vw;
-    //height: 31vw;
     position: relative;
     height: 550px;
     max-width: 1920px;
@@ -99,16 +95,12 @@ section {
 .video-row {
     display: flex;
     gap: 8px;
-    // overflow-x: auto;
-    // overflow-y: clip;
     min-width: 85vw;
     flex-wrap: wrap;
-    // HIER overflow
     position: relative;
 }
 
 .video-box {
-    //border: 1px white solid;
     width: 250px;
     height: 180px;
     border-radius: 4px;
@@ -138,7 +130,6 @@ section {
     display: flex;
     flex-direction: column;
     border-radius: 4px;
-    //transform-origin: left center;
 }
 
 .back-btn{
