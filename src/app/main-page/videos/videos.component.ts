@@ -38,11 +38,6 @@ constructor(private router: Router){}
       this.groupVideosByCategory(); 
     });
 
-    this.videoService.getFavoriteVideoIds().subscribe(favoriteIds => {
-      this.videoService.favoriteVideos = this.videos.filter(video =>
-        favoriteIds.includes(video.id),
-      );
-    })
 
     // const userData = localStorage.getItem('userData');
     // if (userData) {
@@ -271,74 +266,6 @@ constructor(private router: Router){}
       this.hideQualitybutton = false
       this.showQualitySelectButton = false
     }, 1500);
-  }
-
-
-  /**
-  * Adds the current video to the user's favorites by calling the toggleFavorite method in the video service.
-  */
-  addFav() {
-    this.videoService.toggleFavorite(this.currentVideo.id).subscribe(() => {
-      this.videoService.getFavoriteVideoIds().subscribe(favoriteIds => {
-        this.videoService.favoriteVideos = this.videos.filter(video =>
-          favoriteIds.includes(video.id)
-        );
-
-        this.isFavorite(this.currentVideo.id);
-      });
-    });
-    this.triggerAnimation();
-  }
-
-
-  /**
- * Adds the current hovered infobox video to the user's favorites by calling the toggleFavorite method in the video service.
- */
-  addFavfromHoverBox(id: any) {
-    this.videoService.toggleFavorite(id).subscribe(() => {
-      this.videoService.getFavoriteVideoIds().subscribe(favoriteIds => {
-        this.videoService.favoriteVideos = this.videos.filter(video =>
-          favoriteIds.includes(video.id)
-        );
-        this.isFavorite(id);
-      });
-    });
-    this.triggerHoveredVideoFavIcon()
-  }
-
-
-  isFavorite(videoId: number): boolean {
-    return this.videoService.favoriteVideos.some(video => video.id === videoId);
-  }
-
-
-  /**
-   * Triggers the pop animation of the likebutton
-   */
-  triggerAnimation() {
-    const element = document.querySelector('.favorite-icon');
-
-    if (element) {
-      element.classList.add('animate');
-      setTimeout(() => {
-        element.classList.remove('animate');
-      }, 300); 
-    }
-  }
-
-
-  /**
-   * starts the pop animation for the fav icon (heart) at the hovered video
-   */
-  triggerHoveredVideoFavIcon() {
-    const infoBoxElements = document.querySelectorAll('.favorite-icon-infobox');
-
-    infoBoxElements.forEach(infoBoxElement => {
-      infoBoxElement.classList.add('animate');
-      setTimeout(() => {
-        infoBoxElement.classList.remove('animate');
-      }, 300); // Dauer der Animation in Millisekunden
-    });
   }
 
 

@@ -11,7 +11,6 @@ export class VideoService {
 
   constructor(private http: HttpClient, private router: Router) { }
   userId: any;
-  favoriteVideos: any[] = [];
   urlService = inject(ApiUrlsService)
 
 
@@ -46,37 +45,5 @@ export class VideoService {
       );
   }
 
-
-  /**
-   * 
-   * @param videoId the id for the video to add the video to favorites in backend
-   */
-  toggleFavorite(videoId: number): Observable<any> {
-    const userDatas = localStorage.getItem('userData');
-    if (userDatas) {
-      const userData = JSON.parse(userDatas);
-      const userId = userData.user_id;
-      return this.http.post(`https://videoflix.jad-portfolio-api.de/favorites/toggle/${videoId}/`, { user_id: userId });
-    }
-    return of(null);
-  }
-
-
-  /**
-   * 
-   * @returns the numbers/id of liked videos
-   */
-  getFavoriteVideoIds(): Observable<number[]> {
-    if (typeof window !== 'undefined' && window.localStorage) {
-      const userDatas = localStorage.getItem('userData');
-      if (userDatas) {
-        const userData = JSON.parse(userDatas);
-        const userId = userData.user_id;
-        return this.http.get<number[]>(`https://videoflix.jad-portfolio-api.de/favorites/user/${userId}/`);
-      }
-    }
-
-    return of([]);
-  }
 }
 

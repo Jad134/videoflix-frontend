@@ -20,8 +20,6 @@ export class MainHeaderComponent {
   constructor(private router: Router) { }
   showUserActions = false;
   animationState = '';
-  showFavorites = false;
-  @Output() showFavoritesChanged = new EventEmitter<boolean>();
 
   authService = inject(AuthenticationService)
   videoService = inject(VideoService)
@@ -54,19 +52,4 @@ export class MainHeaderComponent {
   }
 
 
-  /**
-   * Set the variables for favorites to show the color at the header link and display the favorites with output
-   */
-  routeToFavorites(): void {
-    this.showFavorites = true;
-    this.showFavoritesChanged.emit(true); 
-  }
-
-   /**
-   * Set the variables for favorites to show the color at the header link and hide the favorites and show all videos with output
-   */
-  routeToHome(): void {
-    this.showFavorites = false;
-    this.showFavoritesChanged.emit(false);
-  }
 }

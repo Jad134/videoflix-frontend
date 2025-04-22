@@ -14,8 +14,7 @@ import { Router, RouterModule} from '@angular/router';
 export class ResponsiveFooterComponent {
   showUserActions = false;
   authService = inject(AuthenticationService)
-  @Output() showFavoritesChanged = new EventEmitter<boolean>()
-  showFavorites = false;
+
 
   constructor(private router: Router){}
 
@@ -43,19 +42,4 @@ export class ResponsiveFooterComponent {
     this.authService.logout()
   }
 
-  /**
-   * Set the variables for favorites to show the color at the header link and display the favorites with output
-   */
-  routeToFavorites(): void {
-    this.showFavorites = true;
-    this.showFavoritesChanged.emit(true); 
-  }
-
-   /**
-   * Set the variables for favorites to show the color at the header link and hide the favorites and show all videos with output
-   */
-  routeToHome(): void {
-    this.showFavorites = false;
-    this.showFavoritesChanged.emit(false);
-  }
 }

@@ -19,7 +19,8 @@
                 <ng-container *ngFor="let video of groupedVideos[category]">
 
                     <div class="video-box">
-                        <img (click)="expandVideo(videoElement, video.video_file, video)" class="thumbnail-image" src="./assets/img/thumbnail-{{video.id}}.png" alt=""> 
+                        <img (click)="expandVideo(videoElement, video.video_file, video)" class="thumbnail-image"
+                            src="./assets/img/thumbnail-{{video.id}}.png" alt="">
                         <video (click)="expandVideo(videoElement, video.video_file, video)" #videoElement class="video">
                             <source [src]="video.video_file" type="video/mp4">
                             Your browser does not support the video tag.
@@ -36,10 +37,6 @@
                                     class="play-icon-button">
                                     <mat-icon class="play_arrow">play_arrow</mat-icon>
                                 </div>
-
-                                <mat-icon (click)="addFavfromHoverBox(video.id)"
-                                    [ngClass]="isFavorite(video.id) ? 'favorite-active' : 'favorite-inactive'"
-                                    class="favorite-icon-infobox">favorite</mat-icon>
                             </div>
                             <div class="title-and-description-hover">
                                 <h2>{{video.title}}</h2>
@@ -57,7 +54,7 @@
                 <a (click)="routeToDataProtection()">Datenschutz</a>
                 <a (click)="routeToImpressum()">Impressum</a>
             </div>
-            
+
         </div>
     </div>
 
@@ -95,7 +92,8 @@
                     <h2>Description:</h2>
                     <p>{{currentVideo.description}}</p>
                 </div>
-                <button (click)="playResponsiveVideo()" class="responsive-play-button"><mat-icon>play_arrow</mat-icon> Play</button>
+                <button (click)="playResponsiveVideo()" class="responsive-play-button"><mat-icon>play_arrow</mat-icon>
+                    Play</button>
                 <img (click)="closeVideoWithButton()" class="back-btn" src="./assets/img/arrow_back.png" alt="">
             </div>
         </div>
