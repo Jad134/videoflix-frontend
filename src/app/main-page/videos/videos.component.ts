@@ -39,7 +39,6 @@ constructor(private router: Router){}
     });
 
     this.videoService.getFavoriteVideoIds().subscribe(favoriteIds => {
-      // Filtert nur die Videos, die in den Favoriten sind
       this.videoService.favoriteVideos = this.videos.filter(video =>
         favoriteIds.includes(video.id),
       );

@@ -21,8 +21,13 @@ export class VideoService {
    * @returns http requests or the error messages
    */
   getVideos(): Observable<any> {
+    let token = '';
+    if (typeof window !== 'undefined' && localStorage.getItem('access_token')) {
+      token = localStorage.getItem('access_token')!;
+    }
+  
     const headers = new HttpHeaders({
-      'Authorization': `Bearer ${localStorage.getItem('access_token')}` // Token aus dem Session Storage
+      'Authorization': `Bearer ${token}`
     });
     return this.http.get(`${this.urlService.GET_VIDEO_URL}`, { headers })
     .pipe(
@@ -31,7 +36,6 @@ export class VideoService {
         if (error.status === 401 || error.status === 403) {
           this.router.navigate(['/login']); 
         }
-        // Rückgabe eines neuen Observables mit einem Fehler
         return throwError(() => new Error('Fehler beim Abrufen der Videos.')); 
       })
     );
