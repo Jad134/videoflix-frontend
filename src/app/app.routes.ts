@@ -20,6 +20,4 @@ export const routes: Routes = [
     { path: 'data-protection', component: DataProtectionComponent },
     { path: 'impressum', component: ImpressumComponent },
     { path: 'reset-password', component: ResetPasswordComponent },
-
-
 ];

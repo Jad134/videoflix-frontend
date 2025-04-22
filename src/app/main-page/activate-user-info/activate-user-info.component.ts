@@ -22,7 +22,7 @@ export class ActivateUserInfoComponent {
   loading = false;
   userNotFound!: boolean;
   userAlreadyActivated!: boolean;
-  countdown: number = 10;  // Startzeit des Countdowns in Sekunden
+  countdown: number = 10;  
   countdownInterval: any;
 
 
@@ -79,14 +79,14 @@ export class ActivateUserInfoComponent {
       this.userAlreadyActivated = status;
       if (status) {
         this.loading = false;
-        this.countdown = 10;  // Setze den Countdown auf 5 Sekunden
+        this.countdown = 10;  
         this.countdownInterval = setInterval(() => {
           this.countdown--;
           if (this.countdown === 0) {
 
             clearInterval(this.countdownInterval);
             this.resetLinkStatus()
-            this.router.navigate(['/browse']);  // Passe die Route entsprechend an
+            this.router.navigate(['/browse']);  
           }
         }, 1000);
       }
