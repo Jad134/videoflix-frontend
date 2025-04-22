@@ -140,7 +140,6 @@ export class FavoritesComponent {
   * @param event - The mouse event triggered when clicking outside the video.
   */
   closeVideo(event: MouseEvent) {
-    // Check if the click is outside the video element
     if (event.target === event.currentTarget) {
       this.expandedVideoElement = null;
       this.expandedVideoSrc = null;
@@ -299,7 +298,7 @@ export class FavoritesComponent {
       element.classList.add('animate');
       setTimeout(() => {
         element.classList.remove('animate');
-      }, 300); // Duration of the animation in milliseconds
+      }, 300); 
     }
   }
 
@@ -325,7 +324,7 @@ export class FavoritesComponent {
       infoBoxElement.classList.add('animate');
       setTimeout(() => {
         infoBoxElement.classList.remove('animate');
-      }, 300); // Dauer der Animation in Millisekunden
+      }, 300);
     });
   }
 
