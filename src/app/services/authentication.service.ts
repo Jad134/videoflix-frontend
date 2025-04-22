@@ -9,13 +9,7 @@ import { ApiUrlsService } from './api-urls.service';
 })
 export class AuthenticationService {
 
-  constructor(private http: HttpClient, private router: Router) { 
-    if (typeof localStorage !== 'undefined') {
-
-    } else {
-
-    }
-  }
+  constructor(private http: HttpClient, private router: Router) { }
   resendActivationLinkStatus = new Subject<boolean>();
   private notFoundStatus = new Subject<boolean>();
   private alreadyActivatedStatus = new Subject<boolean>();
@@ -198,15 +192,7 @@ handleResendActivationLinkErrors(error:any){
 
 
   requestPasswordReset(mail: any) {
-    this.http.post(this.urlService.RESET_PASSWORD_URL, { email: mail })
-      .subscribe({
-        next: (response) => {
-
-        },
-        error: (error) => {
-
-        }
-      });
+    this.http.post(this.urlService.RESET_PASSWORD_URL, { email: mail }).subscribe();
   }
 }
 
